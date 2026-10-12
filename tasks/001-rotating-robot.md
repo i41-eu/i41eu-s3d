@@ -8,7 +8,7 @@ first message.
 You work in `mj41/i41eu-s3d`, a public repo (Apache-2.0): nothing private in it — no tokens, no
 hosts other than the public sites, no personal data. Push only a branch named
 `claude/rotating-robot`, never `main`. The setup script (`setup.sh`) has cloned the related public
-repos beside this one (`../i41eu-assets`, `../q41eu-raw`, `../i41eu-embody`, `../q41eu-pet`, `../q41eu-focus`, `../i41eu-manager`, `../i41eu-web`,
+repos beside this one (`../i41eu-assets`, `../q41eu-raw`, `../i41eu-StackChan`, `../q41eu-pet`, `../q41eu-focus`, `../i41eu-manager`, `../i41eu-web`,
 `../i41eu-arch`); read the README first.
 
 The goal of the project: s.i41.eu/s3d shows the Stackchan robot in 3D in the browser; it turns (by

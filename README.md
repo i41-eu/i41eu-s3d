@@ -13,7 +13,7 @@ Related projects (all public, cloned beside this one by `setup.sh`):
 |---|---|
 | [i41eu-assets](https://github.com/i41-eu/i41eu-assets) | `robot3d`: the 3D model (M5Stack's StackChan STLs, MIT, and the CoreS3 drawn), parts and offsets (`robot3d/mesh.go`) |
 | [q41eu-raw](https://github.com/i41-eu/q41eu-raw) | the wire package: the sensor and command list |
-| [i41eu-embody](https://github.com/i41-eu/i41eu-embody) | the firmware's sensors and actuators (`firmware/main/apps/app_embody_mode/README.md`) |
+| [i41eu-StackChan](https://github.com/i41-eu/i41eu-StackChan) | the firmware's sensors and actuators (`firmware/main/apps/app_embody_mode/README.md`) |
 | [q41eu-pet](https://github.com/i41-eu/q41eu-pet), [q41eu-focus](https://github.com/i41-eu/q41eu-focus), [q41eu-dev](https://github.com/i41-eu/q41eu-dev) | what each app does with them |
 | [i41eu-manager](https://github.com/i41-eu/i41eu-manager) | the app catalog |
 | [i41eu-web](https://github.com/i41-eu/i41eu-web) | the sites' pattern: one Go binary, pages embedded |

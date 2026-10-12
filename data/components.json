@@ -1,5 +1,5 @@
 {
- "about": "The robot's components (each physical part once: where it is, its windows) and their features (what software gets from them: sensors, actuators, other parts) (ports, slots, buttons the firmware does not read; kind other) as Embody Mode exposes them (the i41eu-embody firmware). where: a robot3d part and an offset in millimetres in robot3d's rest space (Y up, facing +Z; the part's node in robot.glb); how: exact (it is there), joint (the joint it moves), inside (somewhere in that part), near (the docs say roughly where). No where: the docs do not say where it is. out: from where the marker is seen (a direction at rest; it sits where a ray from outside along it meets the robot's surface; default: out from the yaw axis). area screen: the screen's rectangle, outlined. with: a feature of these parts (no marker of its own). A where's source may be M5Stack's annotated picture of the robot (StackChan docs): its label quoted. shape: its outline on the robot (mm, on the surface facing out): a circle (r) or a rect (w across, h up, corners r); free: at the offset itself.",
+ "about": "The robot's components (each physical part once: where it is, its windows) and their features (what software gets from them: sensors, actuators, other parts) (ports, slots, buttons the firmware does not read; kind other) as Embody Mode exposes them (the i41eu-StackChan firmware). where: a robot3d part and an offset in millimetres in robot3d's rest space (Y up, facing +Z; the part's node in robot.glb); how: exact (it is there), joint (the joint it moves), inside (somewhere in that part), near (the docs say roughly where). No where: the docs do not say where it is. out: from where the marker is seen (a direction at rest; it sits where a ray from outside along it meets the robot's surface; default: out from the yaw axis). area screen: the screen's rectangle, outlined. with: a feature of these parts (no marker of its own). A where's source may be M5Stack's annotated picture of the robot (StackChan docs): its label quoted. shape: its outline on the robot (mm, on the surface facing out): a circle (r) or a rect (w across, h up, corners r); free: at the offset itself.",
  "components": [
   {
    "id": "ft6336u",
@@ -37,15 +37,15 @@
      "does": "Two fingers on the screen: taps with x/y, double tap, long press, touch_down/touch_up per finger, and a 50 Hz raw stream of both fingers while a browser asks.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 18,
        "quote": "| Touch screen | FT6336U (0x38), 2 points"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 144,
        "quote": "| Touch | the board's FT6336 driver reads both points"
@@ -90,8 +90,8 @@
      "does": "The 2.0\" 320x240 screen: face, emotions, speech, stickers, pictures, QR codes, blank screen, brightness.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 39,
        "quote": "| Display | 2.0\" ILI9342C/E, 320x240"
@@ -136,15 +136,15 @@
      "does": "Live JPEG video at 320x240 (5 fps) or 640x480 (about 2.3 fps), 640x480 snapshots, mirror/flip, raw sensor registers; refused while the camera and microphone are off on the robot.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 19,
        "quote": "| Camera | GC0308 (0x21), up to 640x480"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 67,
        "quote": "**Camera and microphone, set on the robot:**"
@@ -189,15 +189,15 @@
      "does": "Two channels at 24 kHz sent raw: channel 1 the microphone, channel 0 the speaker reference (for echo cancellation).",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 20,
        "quote": "| Microphones | 2x, ES7210 codec (0x40)"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 136,
        "quote": "| Microphone | a FreeRTOS task reads all codec input channels at 24 kHz"
@@ -247,15 +247,15 @@
      "does": "Acceleration per axis (g) and rotation rate (°/s) in telemetry, the shake event, and a raw 100 Hz stream while a browser asks; it sits in the CoreS3, so it tilts with the head.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 21,
        "quote": "| Accelerometer + gyroscope | BMI270 (0x69)"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 137,
        "quote": "| IMU stream | `imu_stream {\"on\"}`"
@@ -269,8 +269,8 @@
      "does": "The magnetic field per axis (µT, compensated, and raw counts) at 10 Hz; a compass needs calibration (the speaker's and servos' magnets).",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 22,
        "quote": "| Magnetometer (compass) | BMM150 (0x10) on the BMI270's AUX I2C"
@@ -356,15 +356,15 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 23,
        "quote": "| Proximity + ambient light | LTR-553ALS-WA (0x23)"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 140,
        "quote": "(LTR-553ALS in the CoreS3, 0x23)"
@@ -382,15 +382,15 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 23,
        "quote": "| Proximity + ambient light | LTR-553ALS-WA (0x23)"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 140,
        "quote": "(LTR-553ALS in the CoreS3, 0x23)"
@@ -407,8 +407,8 @@
       {
        "feature": "ir-transmitter",
        "source": {
-        "repo": "i41eu-embody",
-        "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+        "repo": "i41eu-StackChan",
+        "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
         "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
         "line": 44,
         "quote": "The proximity sensor pauses while it sends."
@@ -448,8 +448,8 @@
       },
       "note": "the head's top, the third z0, at the back (the driver's position runs z0 -100, z1 0, z2 +100; a swipe from z0 to z2 is forward); the pads' exact places are not in the docs",
       "source": {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/hal/hal_head_touch.cpp",
        "line": 36,
        "quote": "intensity[0] * (-100)"
@@ -480,8 +480,8 @@
       },
       "note": "the head's top, the third z1, in the middle (the driver's position runs z0 -100, z1 0, z2 +100; a swipe from z0 to z2 is forward); the pads' exact places are not in the docs",
       "source": {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/hal/hal_head_touch.cpp",
        "line": 36,
        "quote": "intensity[0] * (-100)"
@@ -512,8 +512,8 @@
       },
       "note": "the head's top, the third z2, at the front (the driver's position runs z0 -100, z1 0, z2 +100; a swipe from z0 to z2 is forward); the pads' exact places are not in the docs",
       "source": {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/hal/hal_head_touch.cpp",
        "line": 36,
        "quote": "intensity[0] * (-100)"
@@ -529,15 +529,15 @@
      "does": "A press on the head: head_press with each zone's intensity (0–3); it wakes the screen.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 24,
        "quote": "`head_press` with per-zone intensity (0–3)"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 151,
        "quote": "head-touch press (zones `z0`–`z2`, 0–3)"
@@ -551,15 +551,15 @@
      "does": "The hand lifted: head_release with how long the touch lasted.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 24,
        "quote": "`head_release` with duration"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 151,
        "quote": "release (`ms`)"
@@ -573,15 +573,15 @@
      "does": "A stroke along the head, forward or back, across the zones.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 24,
        "quote": "swipe forward/back"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 151,
        "quote": "and swipes"
@@ -630,8 +630,8 @@
      "does": "Turns the head left and right: angle ±128°, nod/shake/home, continuous rotation for 1–30 s after a Yes on the robot; slack at rest, hold keeps it powered.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 40,
        "quote": "| Head yaw servo (360°) | SCS0009"
@@ -652,8 +652,8 @@
      "does": "Angle, load (%), temperature, supply voltage, raw position, speed and current, moving.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 25,
        "quote": "| Servo feedback | 2x Feetech SCS0009 (serial bus)"
@@ -703,8 +703,8 @@
      "does": "Tilts the head up and down: angle 5–85° (M5Stack's safe range), nod; slack at rest.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 41,
        "quote": "| Head pitch servo (90°) | SCS0009"
@@ -718,8 +718,8 @@
      "does": "Angle, load (%), temperature, supply voltage, raw position, speed and current, moving.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 25,
        "quote": "| Servo feedback | 2x Feetech SCS0009 (serial bus)"
@@ -764,8 +764,8 @@
      "does": "Infrared remote codes: ir_received with the raw timings, NEC decoded.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 26,
        "quote": "| IR receiver | IRM56384 on the Touch board"
@@ -810,8 +810,8 @@
      "does": "Sends infrared remote codes (NEC or raw timings, repeat, frames); weak, so short range. It points up.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 44,
        "quote": "| IR transmitter | IR LED on top of the robot near the display unit"
@@ -821,8 +821,8 @@
       {
        "feature": "proximity",
        "source": {
-        "repo": "i41eu-embody",
-        "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+        "repo": "i41eu-StackChan",
+        "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
         "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
         "line": 44,
         "quote": "The proximity sensor pauses while it sends."
@@ -856,8 +856,8 @@
     },
     "note": "on the head's top: a card laid on the head touch panel is read (the owner, with the robot); the antenna's exact place is not in the docs",
     "source": {
-     "repo": "i41eu-embody",
-     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "repo": "i41eu-StackChan",
+     "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
      "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
      "line": 27,
      "quote": "NFC reader | ST25R3916 (0x50)"
@@ -871,15 +871,15 @@
      "does": "NFC tags held to the robot: nfc_tag with UID, type and the first NDEF record (URI or text) of Type 2 tags, nfc_removed; polled twice a second.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 27,
        "quote": "| NFC reader | ST25R3916 (0x50), IRQ not wired"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 148,
        "quote": "| NFC | `hal/drivers/ST25R3916`"
@@ -1029,8 +1029,8 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 28,
        "quote": "| Battery (PMU) | AXP2101 (0x34)"
@@ -1047,8 +1047,8 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 30,
        "quote": "| USB ports (head CoreS3 + stand)"
@@ -1065,8 +1065,8 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 31,
        "quote": "| Power button | on the AXP2101 PWRON"
@@ -1083,8 +1083,8 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 45,
        "quote": "| Power/charge LED (red) | on the AXP2101 (CHGLED, reg 0x69)"
@@ -1119,8 +1119,8 @@
     },
     "note": "the INA226 on the head's main board (\"body\", HARDWARE.md line 29), seen through the open back; its exact place is not in the docs",
     "source": {
-     "repo": "i41eu-embody",
-     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "repo": "i41eu-StackChan",
+     "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
      "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
      "line": 29,
      "quote": "Battery monitor (body) | INA226 (0x41)"
@@ -1134,8 +1134,8 @@
      "does": "The body battery's voltage, current (+ drain, − charging), power and raw shunt voltage.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 29,
        "quote": "| Battery monitor (body) | INA226 (0x41)"
@@ -1170,8 +1170,8 @@
     },
     "note": "the BM8563 is in the CoreS3 (HARDWARE.md line 32): somewhere in the CoreS3, marked on its top",
     "source": {
-     "repo": "i41eu-embody",
-     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "repo": "i41eu-StackChan",
+     "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
      "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
      "line": 32,
      "quote": "BM8563 (0x51)"
@@ -1185,8 +1185,8 @@
      "does": "The time (rtc_unix in telemetry).",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 32,
        "quote": "| RTC | BM8563 (0x51)"
@@ -1221,8 +1221,8 @@
     },
     "note": "the ESP32-S3 is in the CoreS3: marked on its top",
     "source": {
-     "repo": "i41eu-embody",
-     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "repo": "i41eu-StackChan",
+     "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
      "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
      "line": 33,
      "quote": "| Chip temperature, Wi-Fi | ESP32-S3"
@@ -1236,15 +1236,15 @@
      "does": "The Wi-Fi signal strength (RSSI), in the telemetry every 2 s.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 33,
        "quote": "Wi-Fi RSSI"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 150,
        "quote": "Wi-Fi RSSI"
@@ -1258,15 +1258,15 @@
      "does": "The free heap, in the telemetry every 2 s.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 33,
        "quote": "free memory"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 150,
        "quote": "free heap"
@@ -1280,15 +1280,15 @@
      "does": "The ESP32-S3's own temperature sensor (chip_temp_c), in the telemetry.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 33,
        "quote": "chip temperature (`chip_temp_c`)"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 150,
        "quote": "`chip_temp_c`"
@@ -1387,15 +1387,15 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 42,
        "quote": "| RGB LEDs, 12 | WS2812C x12, two rows"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 139,
        "quote": "`pixels` sets up to 12 single LEDs (left 0–5, then right 6–11"
@@ -1412,15 +1412,15 @@
      ],
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 42,
        "quote": "| RGB LEDs, 12 | WS2812C x12, two rows"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 139,
        "quote": "`pixels` sets up to 12 single LEDs (left 0–5, then right 6–11"
@@ -1470,15 +1470,15 @@
      "does": "Sound: talk from a browser, sound files, beeps (24 kHz PCM), volume; the mouth moves while it plays.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 43,
        "quote": "| Speaker | AW88298 1 W (0x36)"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/README.md",
        "line": 138,
        "quote": "| Speaker | binary `0x03` PCM"
@@ -1513,8 +1513,8 @@
     },
     "note": "PY32 pin 0, the body's expander on the head's main board, seen through the open back; its exact place is not in the docs",
     "source": {
-     "repo": "i41eu-embody",
-     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "repo": "i41eu-StackChan",
+     "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
      "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
      "line": 46,
      "quote": "Servo power | PY32 pin 0"
@@ -1528,8 +1528,8 @@
      "does": "Switches the servos' supply: both head servos powered or limp.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 46,
        "quote": "| Servo power | PY32 pin 0"
@@ -1586,15 +1586,15 @@
      "does": "A Grove I2C port on the CoreS3's right side; the firmware's laser accessory would use it (GPIO2). Not used by Embody Mode yet.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 49,
        "quote": "CoreS3 Port A/B/C"
       },
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 47,
        "quote": "GPIO2 = CoreS3 **Port A**"
@@ -1644,8 +1644,8 @@
      "does": "A Grove GPIO port on the head's top. Not used by Embody Mode yet.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 49,
        "quote": "CoreS3 Port A/B/C"
@@ -1695,8 +1695,8 @@
      "does": "A Grove UART port on the head's top. Not used by Embody Mode yet.",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 49,
        "quote": "CoreS3 Port A/B/C"
@@ -1746,8 +1746,8 @@
      "does": "A microSD card slot on the CoreS3. Not used yet (designed: per-app folders next to the internal store).",
      "sources": [
       {
-       "repo": "i41eu-embody",
-       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 48,
        "quote": "| microSD | slot | not used"

@@ -13,7 +13,7 @@ clone() { # repo [branch]
 }
 clone i41eu-assets
 clone q41eu-raw
-clone i41eu-embody
+clone i41eu-StackChan
 clone q41eu-pet
 clone q41eu-focus
 clone q41eu-dev

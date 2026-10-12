@@ -133,8 +133,8 @@
      "quote": "a nod after focus, a look up after a break"
     },
     {
-     "repo": "i41eu-embody",
-     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "repo": "i41eu-StackChan",
+     "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
      "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
      "line": 41,
      "quote": "| Head pitch servo (90°) | SCS0009 | same | **partial**: angle **5–85°** (M5Stack safe range), nod"
