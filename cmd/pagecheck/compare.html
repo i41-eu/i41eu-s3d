@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset=utf-8>
+<!-- pagecheck -compare: M5Stack's model of the robot (m5.glb, left) and ours (robot.glb, right),
+     each scaled to the robot's height (70.5 mm), its foot on the ground, from the same camera.
+     ?az=degrees round the robot (0: the front, -90: the robot's left), el, zoom, aim (0 foot, 1 top);
+     rx/rz turn M5Stack's model upright (its file lies on its back: rx -90). -->
+<style>body{margin:0;background:#fff}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head><body><script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+const q = new URLSearchParams(location.search);
+const rx=+(q.get('rx')||-90), rz=+(q.get('rz')||0); const az = +(q.get('az')||0), el = +(q.get('el')||12), m5yaw = +(q.get('m5yaw')||0), zoom=+(q.get('zoom')||1), aim=+(q.get('aim')||0.5);
+const W=1200,H=600;
+const r = new THREE.WebGLRenderer({antialias:true, preserveDrawingBuffer:true}); r.setSize(W,H); document.body.append(r.domElement);
+r.setScissorTest(true); r.toneMapping=THREE.ACESFilmicToneMapping; r.toneMappingExposure=0.8;
+const pm = new THREE.PMREMGenerator(r);
+const env = pm.fromScene(new RoomEnvironment(), 0.04).texture;
+async function load(url){ const g=await new GLTFLoader().loadAsync(url); return g.scene; }
+function stage(obj, yaw){
+  const s=new THREE.Scene(); s.background=new THREE.Color(0xffffff); s.environment=env;
+  s.add(new THREE.HemisphereLight(0xffffff,0x8a8f96,0.6)); const k=new THREE.DirectionalLight(0xffffff,1.2); k.position.set(-1,2,1.5); s.add(k);
+  const g=new THREE.Group(); g.add(obj); s.add(g);
+  obj.updateMatrixWorld(true);
+  let b=new THREE.Box3().setFromObject(obj); const sz=b.getSize(new THREE.Vector3());
+  const sc=0.0705/sz.y; obj.scale.multiplyScalar(sc); obj.updateMatrixWorld(true);
+  b=new THREE.Box3().setFromObject(obj); const c=b.getCenter(new THREE.Vector3());
+  obj.position.sub(new THREE.Vector3(c.x,b.min.y,c.z));
+  g.rotation.y=(az+yaw)*Math.PI/180;
+  return s;
+}
+try {
+const [a,b]=await Promise.all([load('m5.glb'),load('robot.glb')]);
+const w=new THREE.Group(); a.rotation.x+=rx*Math.PI/180; a.rotation.z+=rz*Math.PI/180; w.add(a); const sA=stage(w,m5yaw), sB=stage(b,0);
+const cam=new THREE.PerspectiveCamera(30,(W/2)/H,0.005,2);
+const d=0.22*zoom, t=new THREE.Vector3(0,0.0705*aim,0);
+cam.position.set(0,t.y+d*Math.sin(el*Math.PI/180),d*Math.cos(el*Math.PI/180)); cam.lookAt(t);
+r.setViewport(0,0,W/2,H); r.setScissor(0,0,W/2,H); r.render(sA,cam);
+r.setViewport(W/2,0,W/2,H); r.setScissor(W/2,0,W/2,H); r.render(sB,cam);
+document.title='done';
+} catch (e) { document.title = 'error: ' + e.message; }
+</script></body></html>

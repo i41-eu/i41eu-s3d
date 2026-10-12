@@ -1,0 +1,80 @@
+{
+ "about": "Pictures painted on the robot where robot3d draws no text: crops of the owner's photos of the robot (straightened, saved without their metadata), in data/decals/. Each on a part (robot.glb's), on its side facing face, with its top left, top right and bottom left corners where they lie at rest (mm, robot3d's space).",
+ "decals": [
+  {
+   "part": "base-cover",
+   "image": "base-cover.png",
+   "about": "the base's bottom cover: its label, rubber strips, screws and M5 logo (the owner's photo of the bottom, straightened by its four screws onto the cover's screw holes, x ±9 mm, z 26.37 and -17.63; the front, its notch, at the top)",
+   "face": [
+    0,
+    -1,
+    0
+   ],
+   "topLeft": [
+    -21.67,
+    0,
+    30.565
+   ],
+   "topRight": [
+    22.73,
+    0,
+    30.565
+   ],
+   "bottomLeft": [
+    -21.67,
+    0,
+    -21.835
+   ]
+  },
+  {
+   "part": "body",
+   "image": "sticker-left.png",
+   "about": "the sticker on the left side (the owner's photo; the front at the left, its dark end at the top)",
+   "face": [
+    1,
+    0,
+    0
+   ],
+   "topLeft": [
+    27.06,
+    65,
+    16.2
+   ],
+   "topRight": [
+    27.06,
+    65,
+    10.9
+   ],
+   "bottomLeft": [
+    27.06,
+    26,
+    16.2
+   ]
+  },
+  {
+   "part": "body",
+   "image": "sticker-right.png",
+   "about": "the sticker on the right side: the left one turned round (its dark end at the bottom, as on M5Stack's photo of the right side)",
+   "face": [
+    -1,
+    0,
+    0
+   ],
+   "topLeft": [
+    -27.06,
+    65,
+    10.9
+   ],
+   "topRight": [
+    -27.06,
+    65,
+    16.2
+   ],
+   "bottomLeft": [
+    -27.06,
+    26,
+    10.9
+   ]
+  }
+ ]
+}

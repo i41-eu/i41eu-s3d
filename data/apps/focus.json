@@ -1,0 +1,157 @@
+{
+ "id": "focus",
+ "name": "Focus",
+ "about": "A focus timer for your desk: the robot is the timer, a phone optional.",
+ "repo": "q41eu-focus",
+ "page": "https://s.i41.eu/focus",
+ "web": "https://focus.q41.eu",
+ "sources": [
+  {
+   "repo": "q41eu-focus",
+   "ref": "94a551da41606269162e77d4321910c91cf63876",
+   "path": "readme.md",
+   "line": 5,
+   "quote": "**Focus** is a focus timer for Stackchan robots"
+  },
+  {
+   "repo": "q41eu-focus",
+   "ref": "94a551da41606269162e77d4321910c91cf63876",
+   "path": "readme.md",
+   "line": 76,
+   "quote": "{\"id\": \"focus\", \"name\": \"Focus\""
+  }
+ ],
+ "leds": {
+  "color": "#e5533d",
+  "each": "#e5533d,#e5533d,#e5533d,#e5533d,,,,,#e5533d,#e5533d,#e5533d,#e5533d",
+  "does": "Red while focusing: the time left as a shrinking bar, as the assets' picture of Focus shows it.",
+  "sources": [
+   {
+    "repo": "q41eu-focus",
+    "ref": "94a551da41606269162e77d4321910c91cf63876",
+    "path": "readme.md",
+    "line": 43,
+    "quote": "red while focusing"
+   },
+   {
+    "repo": "i41eu-assets",
+    "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+    "path": "renders.json",
+    "line": 30,
+    "quote": "\"leds\": \"#e5533d,#e5533d,#e5533d,#e5533d,,,,,#e5533d"
+   }
+  ]
+ },
+ "uses": [
+  {
+   "feature": "display",
+   "does": "The phase, the time left as a ring and as digits, today's count, the set's dots, and a line for the room (\"FREE IN 12 MIN\").",
+   "sources": [
+    {
+     "repo": "q41eu-focus",
+     "ref": "94a551da41606269162e77d4321910c91cf63876",
+     "path": "readme.md",
+     "line": 37,
+     "quote": "**The screen:** the phase"
+    }
+   ]
+  },
+  {
+   "feature": "touch-screen",
+   "does": "Tap to start or pause, hold to skip to the next phase.",
+   "sources": [
+    {
+     "repo": "q41eu-focus",
+     "ref": "94a551da41606269162e77d4321910c91cf63876",
+     "path": "readme.md",
+     "line": 41,
+     "quote": "**Touch:** tap the screen"
+    }
+   ]
+  },
+  {
+   "feature": "head-press",
+   "does": "A touch on the head starts or pauses, as a tap on the screen does.",
+   "sources": [
+    {
+     "repo": "q41eu-focus",
+     "ref": "94a551da41606269162e77d4321910c91cf63876",
+     "path": "readme.md",
+     "line": 41,
+     "quote": "(or touch the head) to start or pause"
+    }
+   ]
+  },
+  {
+   "feature": "leds-left",
+   "does": "The time left as a shrinking bar: red while focusing, green or blue on a break, amber when paused, off when idle.",
+   "sources": [
+    {
+     "repo": "q41eu-focus",
+     "ref": "94a551da41606269162e77d4321910c91cf63876",
+     "path": "readme.md",
+     "line": 43,
+     "quote": "**Lights:** both LED strips show the time left"
+    }
+   ]
+  },
+  {
+   "feature": "leds-right",
+   "does": "The time left as a shrinking bar: red while focusing, green or blue on a break, amber when paused, off when idle.",
+   "sources": [
+    {
+     "repo": "q41eu-focus",
+     "ref": "94a551da41606269162e77d4321910c91cf63876",
+     "path": "readme.md",
+     "line": 43,
+     "quote": "**Lights:** both LED strips show the time left"
+    }
+   ]
+  },
+  {
+   "feature": "speaker",
+   "does": "A chime at the end of a phase: a rising bell after focus, two calm notes after a break.",
+   "sources": [
+    {
+     "repo": "q41eu-focus",
+     "ref": "94a551da41606269162e77d4321910c91cf63876",
+     "path": "readme.md",
+     "line": 45,
+     "quote": "a chime (a rising bell after focus, two calm notes after a break)"
+    }
+   ]
+  },
+  {
+   "feature": "pitch-servo",
+   "does": "A nod after focus, a look up after a break.",
+   "sources": [
+    {
+     "repo": "q41eu-focus",
+     "ref": "94a551da41606269162e77d4321910c91cf63876",
+     "path": "readme.md",
+     "line": 46,
+     "quote": "a nod after focus, a look up after a break"
+    },
+    {
+     "repo": "i41eu-embody",
+     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+     "line": 41,
+     "quote": "| Head pitch servo (90°) | SCS0009 | same | **partial**: angle **5–85°** (M5Stack safe range), nod"
+    }
+   ]
+  }
+ ],
+ "screen": {
+  "image": "focus.png",
+  "sources": [
+   {
+    "repo": "i41eu-assets",
+    "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+    "path": "renders.json",
+    "line": 27,
+    "quote": "\"screen\": \"screens/focus.png\""
+   }
+  ]
+ }
+}

@@ -1,0 +1,274 @@
+{
+ "id": "dev",
+ "name": "Dev",
+ "about": "Dev: your own programs and AI agents use the robot (cards, questions, moves, LEDs, sounds, and what people do at it) over HTTP or MCP, with a key.",
+ "repo": "q41eu-dev",
+ "page": "https://s.i41.eu/dev",
+ "web": "https://dev.q41.eu",
+ "sources": [
+  {
+   "repo": "q41eu-dev",
+   "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+   "path": "readme.md",
+   "line": 3,
+   "quote": "**Dev** gives your Stackchan robot to your own programs and AI agents"
+  }
+ ],
+ "leds": {
+  "color": "#06b310",
+  "each": "#06b310,#06b310,#06b310,#06b310,#06b310,#06b310,#06b310,#06b310,#06b310,#06b310,#06b310,#06b310",
+  "does": "What your program sets; here a full green bar, as with the readme's build example.",
+  "sources": [
+   {
+    "repo": "q41eu-dev",
+    "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+    "path": "readme.md",
+    "line": 71,
+    "quote": "| `leds` |"
+   }
+  ]
+ },
+ "screen": {
+  "image": "dev-build.png",
+  "sources": [
+   {
+    "repo": "i41eu-assets",
+    "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+    "path": "renders.json",
+    "line": 45,
+    "quote": "\"screen\": \"screens/dev-build.png\""
+   }
+  ]
+ },
+ "uses": [
+  {
+   "feature": "display",
+   "does": "Your program's cards (a title, text that sizes itself, a note, a progress bar) or pictures; a speech bubble over the face; the face's emotion, or the robot's own readings.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 67,
+     "quote": "| `show` |"
+    },
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 68,
+     "quote": "| `say` |"
+    },
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 69,
+     "quote": "| `face` |"
+    }
+   ]
+  },
+  {
+   "feature": "touch-screen",
+   "does": "A question with two to four buttons: your program gets the one tapped; taps and long presses as events.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 73,
+     "quote": "| `ask` |"
+    },
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 78,
+     "quote": "`tap` {x, y}, `long_press`"
+    }
+   ]
+  },
+  {
+   "feature": "speaker",
+   "does": "Named chimes or notes of your own, at a volume.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 72,
+     "quote": "| `sound` |"
+    }
+   ]
+  },
+  {
+   "feature": "yaw-servo",
+   "does": "A nod, a shake, home, or a look to a yaw.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 70,
+     "quote": "| `move` |"
+    }
+   ]
+  },
+  {
+   "feature": "pitch-servo",
+   "does": "A nod, a shake, home, or a look to a pitch.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 70,
+     "quote": "| `move` |"
+    }
+   ]
+  },
+  {
+   "feature": "leds-left",
+   "does": "A colour, a bar (0 to 1, across both sides), single LEDs, or an effect.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 71,
+     "quote": "| `leds` |"
+    }
+   ]
+  },
+  {
+   "feature": "leds-right",
+   "does": "A colour, a bar (0 to 1, across both sides), single LEDs, or an effect.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 71,
+     "quote": "| `leds` |"
+    }
+   ]
+  },
+  {
+   "feature": "si12t",
+   "does": "A pat, petting (how long) and a stroke (its direction) as events.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 78,
+     "quote": "`pat` (a short"
+    }
+   ]
+  },
+  {
+   "feature": "imu",
+   "does": "Shaken and picked up, as events.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 79,
+     "quote": "`shaken`, `picked_up`"
+    }
+   ]
+  },
+  {
+   "feature": "proximity",
+   "does": "Something near, and away again, as events.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 79,
+     "quote": "`near`, `away`"
+    }
+   ]
+  },
+  {
+   "feature": "light",
+   "does": "The light in lux, in the robot's state.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 66,
+     "quote": "`light_lux`"
+    }
+   ]
+  },
+  {
+   "feature": "nfc",
+   "does": "A tag held near the head (its id, type and text), and taken away, as events.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 80,
+     "quote": "`tag` {uid, type, text}"
+    }
+   ]
+  },
+  {
+   "feature": "ir-receiver",
+   "does": "A remote's button (address and command), as an event.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 80,
+     "quote": "`remote` {address, command}"
+    }
+   ]
+  },
+  {
+   "feature": "power-button",
+   "does": "A press of the power button, as an event.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 80,
+     "quote": "`button`"
+    }
+   ]
+  },
+  {
+   "feature": "usb",
+   "does": "Plugged in and unplugged, as events.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 81,
+     "quote": "`plugged`, `unplugged`"
+    }
+   ]
+  },
+  {
+   "feature": "battery",
+   "does": "The charge in percent, in the robot's state.",
+   "sources": [
+    {
+     "repo": "q41eu-dev",
+     "ref": "6934b0fc5962471497d7b9aa4c2053a7edd6e26b",
+     "path": "readme.md",
+     "line": 66,
+     "quote": "`battery_pct`"
+    }
+   ]
+  }
+ ]
+}

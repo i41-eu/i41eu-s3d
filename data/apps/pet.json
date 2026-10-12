@@ -1,0 +1,353 @@
+{
+ "id": "pet",
+ "name": "Pet",
+ "about": "A Tamagotchi for Stackchan robots: the pet lives on the server, the robot is its body.",
+ "repo": "q41eu-pet",
+ "page": "https://s.i41.eu/pet",
+ "web": "https://pet.q41.eu",
+ "sources": [
+  {
+   "repo": "q41eu-pet",
+   "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+   "path": "readme.md",
+   "line": 5,
+   "quote": "A Tamagotchi for [Stackchan]"
+  },
+  {
+   "repo": "q41eu-pet",
+   "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+   "path": "readme.md",
+   "line": 161,
+   "quote": "{\"id\": \"pet\", \"name\": \"Pet\""
+  }
+ ],
+ "leds": {
+  "color": "#ffb347",
+  "does": "Warm, the colour of the pet's mood (here: happy), as the assets' picture of the pet shows it.",
+  "sources": [
+   {
+    "repo": "q41eu-pet",
+    "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+    "path": "readme.md",
+    "line": 3,
+    "quote": "its LEDs warm"
+   },
+   {
+    "repo": "i41eu-assets",
+    "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+    "path": "renders.json",
+    "line": 11,
+    "quote": "\"leds\": \"#ffb347*12\""
+   }
+  ]
+ },
+ "uses": [
+  {
+   "feature": "si12t",
+   "does": "Stroked or pressed: tickle, cuddle, long cuddle or scratch, each with its own line and fun; at night the whole palm wakes it.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 61,
+     "quote": "| Stroke or press the head |"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 73,
+     "quote": "**T1** Kinds of touch"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 58,
+     "quote": "the whole palm on the head (all three zones at full"
+    }
+   ]
+  },
+  {
+   "feature": "nfc",
+   "does": "A food card held to it: it eats the card's food (picky about the same food twice); asleep, it dreams of the food.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 62,
+     "quote": "| Hold an NFC card to it |"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 87,
+     "quote": "**F1** A card is a food"
+    }
+   ]
+  },
+  {
+   "feature": "touch-screen",
+   "does": "A tap opens a menu (food, play, nap, needs); a long press gets a line; in Catch the ball the kid taps the balls.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 63,
+     "quote": "| Tap the screen |"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 64,
+     "quote": "| Press the screen long |"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 165,
+     "quote": "the ball on the robot's screen"
+    }
+   ]
+  },
+  {
+   "feature": "imu",
+   "does": "Shaken: \"Wheee!\", dizzy. The accelerometer and gyro tell when the robot is in someone's hands, and then the head never moves.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 65,
+     "quote": "| Shake it |"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 79,
+     "quote": "The head never moves while the robot is in someone's hands (the accelerometer"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 156,
+     "quote": "tilt of more than 12° from the learned rest pose, turning (gyro over 8°/s)"
+    }
+   ]
+  },
+  {
+   "feature": "proximity",
+   "does": "Someone comes close: a hello now and then (at most every 20 minutes); in Catch the ball the head dodges a hand coming close.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 66,
+     "quote": "| Come close (proximity) |"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 125,
+     "quote": "**O2** Someone comes close (proximity)"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 168,
+     "quote": "close (proximity 20 above its normal level"
+    }
+   ]
+  },
+  {
+   "feature": "light",
+   "does": "In Catch the ball a hand's shadow (light below 40% of normal) also counts as coming close; during a game the brightness is fixed so a hand near the light sensor does not dim the screen.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 168,
+     "quote": "or the hand's shadow: light below"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 198,
+     "quote": "**G7** During a game the screen has a fixed brightness"
+    }
+   ]
+  },
+  {
+   "feature": "display",
+   "does": "The pet's face per mood (Fluent Emoji filling the screen, or the robot's own face), menus, food, the games and the podium.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 20,
+     "quote": "The robot's face, per mood"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 129,
+     "quote": "**R1** Face: Fluent Emoji faces per mood"
+    }
+   ]
+  },
+  {
+   "feature": "leds-left",
+   "does": "The mood's colour; in the color game the LED strips show the colors to press.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 131,
+     "quote": "LEDs show the mood's colour either way"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 75,
+     "quote": "the LED strips show colors"
+    }
+   ]
+  },
+  {
+   "feature": "leds-right",
+   "does": "The mood's colour; in the color game the LED strips show the colors to press.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 131,
+     "quote": "LEDs show the mood's colour either way"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 75,
+     "quote": "the LED strips show colors"
+    }
+   ]
+  },
+  {
+   "feature": "speaker",
+   "does": "The pet speaks its lines (a kid's voice, streamed at speaking pace) and plays sounds under 3 s.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 136,
+     "quote": "robot's speaker"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 139,
+     "quote": "**R4** Sounds are under 3 s"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 197,
+     "quote": "The speech is streamed to the robot at speaking pace."
+    }
+   ]
+  },
+  {
+   "feature": "camera",
+   "does": "Takes a photo of the kid for the color game's leaderboard (a parent setting, on by default).",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 204,
+     "quote": "takes a photo with its camera"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "readme.md",
+     "line": 77,
+     "quote": "leaderboard with photos from the robot's camera"
+    }
+   ]
+  },
+  {
+   "feature": "pitch-servo",
+   "does": "Lifts the sunken head back by day (rest pitch 25°); moves the head in Catch the ball.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 144,
+     "quote": "rest pitch 25°"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 166,
+     "quote": "**G2** The head makes later balls harder"
+    }
+   ]
+  },
+  {
+   "feature": "yaw-servo",
+   "does": "A head turned more than 30° goes back to the middle; the head circles and dodges in Catch the ball.",
+   "sources": [
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 145,
+     "quote": "a head turned more than 30° goes back to the"
+    },
+    {
+     "repo": "q41eu-pet",
+     "ref": "9561952cea57f85a2fb6aaeb32af912f21aca8e3",
+     "path": "docs/requirements.md",
+     "line": 167,
+     "quote": "still, ball 2 circles, ball 3 random moves, balls 4–5 dodge a hand coming"
+    }
+   ]
+  }
+ ],
+ "screen": {
+  "image": "pet-happy.png",
+  "sources": [
+   {
+    "repo": "i41eu-assets",
+    "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+    "path": "renders.json",
+    "line": 7,
+    "quote": "\"screen\": \"screens/pet-happy.png\""
+   }
+  ]
+ }
+}

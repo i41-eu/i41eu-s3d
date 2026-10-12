@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The robot in 3D</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235b6cff'/%3E%3Ctext x='32' y='43' font-family='sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='white'%3Ei41%3C/text%3E%3C/svg%3E">
+<meta name="description" content="The Stackchan robot in 3D: its sensors and actuators, and what each app does with them.">
+<style>
+:root {
+  --bg: #f4f5f7; --panel: #ffffff; --ink: #1d1f23; --muted: #5d636b; --line: #dde0e4;
+  --sensor: #1f77d0; --actuator: #bb571b; --dim: #9aa0a8; --accent: #0d7e57; /* 4.5:1 or more on white and --bg */
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15171a; --panel: #1d2024; --ink: #e8eaed; --muted: #a0a6ae; --line: #30343a;
+    --sensor: #5aa7f0; --actuator: #f08a4b; --dim: #6b7178; --accent: #3ccf95; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { padding: 14px 16px 6px; display: flex; gap: 8px 16px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+nav.sites { display: flex; gap: 4px 12px; flex-wrap: wrap; font-size: .9rem; padding-top: 3px; }
+nav.sites a { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-block; padding: 4px 0; min-height: 24px; } /* 24 px tap targets */
+input[type="checkbox"] { width: 20px; height: 20px; margin: 2px; } /* with its margin, a 24 px tap target */
+nav.sites a:hover { text-decoration: underline; }
+h1 { margin: 0; font-size: 1.3rem; }
+header p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
+main { display: grid; grid-template-columns: min(calc(100vh - 110px), 58vw) minmax(0, 1fr); gap: 12px; padding: 8px 16px 16px; align-items: start; }
+@media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); } }
+/* about square: the turning robot is as wide as it is high */
+#stage { position: relative; aspect-ratio: 1; min-height: 420px; max-height: calc(100vh - 110px); border-radius: 12px;
+  overflow: hidden; background: var(--panel); border: 1px solid var(--line); touch-action: none; cursor: grab; }
+@media (max-width: 860px) { #stage { min-height: 300px; max-height: 75vh; } }
+#spin { position: absolute; top: 8px; right: 8px; z-index: 2; font: inherit; font-size: .82rem; padding: 4px 10px; border-radius: 8px;
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 90%, transparent); color: var(--ink); cursor: pointer; }
+#spin[aria-pressed="false"] { color: var(--accent); border-color: var(--accent); }
+.turn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 85%, transparent); color: var(--ink);
+  font-size: 15px; cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,.15); }
+.turn:hover { border-color: var(--accent); color: var(--accent); }
+#turn-left { left: 8px; } #turn-right { right: 8px; }
+#stage.dragging { cursor: grabbing; }
+#stage canvas { display: block; }
+#status { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); pointer-events: none; }
+#hint { position: absolute; left: 10px; bottom: 8px; font-size: .8rem; color: var(--muted); pointer-events: none; }
+aside { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px;
+  overflow: auto; max-height: calc(100vh - 110px); }
+@media (max-width: 860px) { aside { max-height: none; } }
+.tomodel { display: none; }
+@media (max-width: 860px) { .tomodel { display: inline-block; margin-top: 4px; font-size: .85rem; color: var(--accent); text-decoration: none; padding: 4px 0; } }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.controls label { display: flex; align-items: center; gap: 6px; }
+select { font: inherit; padding: 4px 6px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+h2 { font-size: 1rem; margin: 12px 0 4px; }
+.about { color: var(--muted); margin: 4px 0 8px; font-size: .92rem; }
+ul.items { list-style: none; margin: 0; padding: 0; }
+ul.items li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; padding: 7px 6px; border-bottom: 1px solid var(--line); cursor: pointer; border-radius: 6px; }
+ul.items li input { margin-top: 4px; cursor: pointer; }
+ul.items li:hover { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+ul.apps { list-style: none; margin: 0 0 6px; padding: 0; } ul.apps li { padding: 4px 0; }
+ul.apps li > a { font-weight: 600; color: var(--accent); }
+.links { display: inline-flex; gap: 10px; flex-wrap: wrap; font-size: .85rem; margin: 2px 0 4px; }
+.links a { color: var(--accent); }
+ul.items li:last-child { border-bottom: 0; }
+ul.items li.component { display: block; cursor: default; padding: 7px 6px 2px; }
+ul.items li.component:hover { background: none; }
+.comp-head { display: flex; align-items: baseline; gap: 8px; }
+.comp-head .name { font-weight: 600; }
+.comp-head .chip { font-size: .8rem; color: var(--muted); }
+ul.items.features { margin: 2px 0 0 18px; border-left: 2px solid var(--line); padding-left: 6px; }
+.meta.excludes { color: var(--actuator); }
+ul.items li.active { background: color-mix(in srgb, var(--accent) 14%, transparent); box-shadow: inset 3px 0 var(--accent); }
+.name { font-weight: 600; }
+.kind { display: inline-block; font-size: .72rem; padding: 0 6px; border-radius: 8px; margin-left: 6px; color: #fff; vertical-align: 1px; }
+.kind.sensor { background: var(--sensor); } .kind.actuator { background: var(--actuator); } .kind.other { background: #5f6b7a; }
+.does { margin: 2px 0; }
+.meta, .src { font-size: .8rem; color: var(--muted); }
+.src a { color: inherit; overflow-wrap: anywhere; }
+.src summary { cursor: pointer; min-height: 24px; padding: 3px 0; width: fit-content; }
+.src > div { padding: 0 0 4px; }
+.src, .about, .does, .meta { overflow-wrap: anywhere; }
+aside { min-width: 0; }
+.swatch { display: inline-block; width: .8em; height: .8em; border-radius: 50%; margin-right: 6px; vertical-align: -1px; box-shadow: 0 0 6px currentColor; }
+.unplaced { font-size: .8rem; color: var(--muted); }
+.label { font-size: 11px; line-height: 1.2; padding: 2px 6px; border-radius: 6px; white-space: nowrap;
+  background: var(--c, var(--sensor)); border: 1px solid var(--c, var(--sensor)); color: #fff; font-weight: 600;
+  pointer-events: auto; cursor: pointer; transition: opacity .2s; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.label.focus { box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--c, var(--sensor)); z-index: 3; }
+.label.flash { animation: flash .8s; }
+@keyframes flash { from { transform: scale(1.25); } }
+ul.items li.placed .name::before { content: ""; display: inline-block; width: .7em; height: .7em; border-radius: 3px;
+  background: var(--c); margin-right: 6px; vertical-align: 0; }
+ul.items li.placed.active { background: color-mix(in srgb, var(--c) 14%, transparent); box-shadow: inset 3px 0 var(--c); }
+footer { padding: 0 16px 16px; color: var(--muted); font-size: .8rem; }
+footer a { color: inherit; }
+</style>
+<script type="importmap">{"imports":{"three":"./three@0.160.0/build/three.module.js","three/addons/":"./three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<header>
+  <div>
+    <h1>The robot in 3D</h1>
+    <p>The robot, its sensors and actuators, and what each app does with them. Drag to turn it; pick a part to see it.</p>
+  </div>
+  <nav class="sites" aria-label="Stackchan sites">
+    <a href="https://s.i41.eu">s.i41.eu</a>
+    <a href="https://m.i41.eu" title="the Stackchan manager">m.i41.eu</a>
+    <a href="https://raw.q41.eu" title="Raw data">raw.q41.eu</a>
+    <a href="https://pet.q41.eu" title="Pet">pet.q41.eu</a>
+    <a href="https://focus.q41.eu" title="Focus">focus.q41.eu</a>
+    <a href="https://dev.q41.eu" title="Dev">dev.q41.eu</a>
+  </nav>
+</header>
+<main>
+  <div id="stage"><div id="status">Loading the robot…</div><div id="hint">drag to turn</div><button id="spin" type="button" aria-pressed="true">⏸ Stop turning</button><button id="turn-left" class="turn" type="button" aria-label="Turn to the next side, left">◀</button><button id="turn-right" class="turn" type="button" aria-label="Turn to the next side, right">▶</button></div>
+  <aside>
+    <div class="controls">
+      <label>App <select id="app"><option value="">— none: all components —</option></select></label>
+      <label title="Show all of the list on the robot"><input type="checkbox" id="markers" checked> All</label>
+    </div>
+    <div id="panel"></div>
+  </aside>
+</main>
+<footer>
+  The model: <a href="https://github.com/i41-eu/i41eu-assets">robot3d</a> (M5Stack's StackChan structure, MIT).
+  The components and features: the <a href="https://github.com/i41-eu/i41eu-embody/tree/main/firmware/main/apps/app_embody_mode">Embody Mode firmware</a>'s docs.
+  Source: <a href="https://github.com/i41-eu/i41eu-s3d">i41eu-s3d</a>.
+  The Stackchan sites: <a href="https://s.i41.eu">s.i41.eu</a> (index), <a href="https://m.i41.eu">m.i41.eu</a> (the manager),
+  the apps <a href="https://raw.q41.eu">raw.q41.eu</a>, <a href="https://pet.q41.eu">pet.q41.eu</a>, <a href="https://focus.q41.eu">focus.q41.eu</a> and <a href="https://dev.q41.eu">dev.q41.eu</a>.
+  Stack-chan is a registered trademark of Shinya Ishikawa; this project is independent of it.
+</footer>
+</body>
+</html>

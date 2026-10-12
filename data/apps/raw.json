@@ -1,0 +1,418 @@
+{
+ "id": "raw",
+ "name": "Raw data",
+ "about": "Raw data: see through the robot and control it from any browser, every sensor and command.",
+ "repo": "q41eu-raw",
+ "page": "https://s.i41.eu/raw",
+ "web": "https://raw.q41.eu",
+ "sources": [
+  {
+   "repo": "q41eu-raw",
+   "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+   "path": "readme.md",
+   "line": 5,
+   "quote": "Relay between M5Stack Stackchan robots and web browsers"
+  },
+  {
+   "repo": "i41eu-arch",
+   "ref": "450274cce1dd6f13eca5b0a66c2208789b81f92c",
+   "path": "docs/stackchan-sites.md",
+   "line": 15,
+   "quote": "every sensor and command, an app like any other"
+  }
+ ],
+ "uses": [
+  {
+   "feature": "display",
+   "does": "Faces (six emotions), speech bubbles, stickers, emoji and pictures from the phone; brightness.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 71,
+     "quote": "**Face** (display)"
+    },
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 75,
+     "quote": "**Screen:**"
+    }
+   ]
+  },
+  {
+   "feature": "touch-screen",
+   "does": "Live touch: both fingers drawn at 50 Hz; taps with coordinates in Events.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 76,
+     "quote": "**Live touch**"
+    }
+   ]
+  },
+  {
+   "feature": "camera",
+   "does": "Live video (JPEG, about 5 fps), a 640×480 snapshot, mirror and flip, raw sensor registers.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 81,
+     "quote": "**Camera & mic:**"
+    },
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 77,
+     "quote": "**Camera extras:**"
+    }
+   ]
+  },
+  {
+   "feature": "microphones",
+   "does": "The robot's microphone, played in the browser.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 81,
+     "quote": "**Camera & mic:**"
+    }
+   ]
+  },
+  {
+   "feature": "speaker",
+   "does": "Talk from the phone, play a sound file, beep.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 82,
+     "quote": "**Speaker:**"
+    }
+   ]
+  },
+  {
+   "feature": "yaw-servo",
+   "does": "Nod, shake, home, a yaw slider; continuous rotation after a Yes on the robot.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 72,
+     "quote": "**Head:**"
+    },
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 79,
+     "quote": "**Head extras:**"
+    }
+   ]
+  },
+  {
+   "feature": "pitch-servo",
+   "does": "A pitch slider (5–85°), nod, home, hold position.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 72,
+     "quote": "**Head:**"
+    }
+   ]
+  },
+  {
+   "feature": "yaw-servo-feedback",
+   "does": "Load and temperature, supply voltage, the reported angle of the yaw servo.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "pitch-servo-feedback",
+   "does": "Load and temperature, supply voltage, the reported angle of the pitch servo.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "leds-left",
+   "does": "One colour for all, random, effects (rainbow, breathe, chase, blink), a picker per LED.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 73,
+     "quote": "**LEDs:**"
+    }
+   ]
+  },
+  {
+   "feature": "leds-right",
+   "does": "As the left: all 12 LEDs from the dashboard.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 73,
+     "quote": "**LEDs:**"
+    }
+   ]
+  },
+  {
+   "feature": "imu",
+   "does": "Shake in Events; a live 100 Hz IMU with a CSV download; acceleration and rotation in Sensors.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 80,
+     "quote": "**Live IMU**"
+    },
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "magnetometer",
+   "does": "The magnetic field per axis (µT and raw counts), live with the IMU.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "light",
+   "does": "Room light (lux) in Sensors.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "proximity",
+   "does": "Proximity in Sensors.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "si12t",
+   "does": "Head touch in Events: press with the zones, release with its duration, swipes.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 90,
+     "quote": "head touch (press with the touched zones"
+    }
+   ]
+  },
+  {
+   "feature": "nfc",
+   "does": "Reader on/off; a tag near the robot adds its UID, type and NDEF record to Events.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 85,
+     "quote": "**NFC:**"
+    }
+   ]
+  },
+  {
+   "feature": "ir-receiver",
+   "does": "A TV remote's code shows up, to send again or save.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 83,
+     "quote": "**Infrared:**"
+    }
+   ]
+  },
+  {
+   "feature": "ir-transmitter",
+   "does": "Send NEC or raw codes, hold, send 3×, test the LED, self-test.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 83,
+     "quote": "**Infrared:**"
+    }
+   ]
+  },
+  {
+   "feature": "power-led",
+   "does": "On, blink, fast, off, or charging.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 84,
+     "quote": "**Power LED**"
+    }
+   ]
+  },
+  {
+   "feature": "battery",
+   "does": "Battery, charging, the CoreS3 power chip's voltages and state.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 50,
+     "quote": "a line with its battery, Wi-Fi and uptime"
+    },
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "battery-monitor",
+   "does": "The body battery's voltage, current and power (INA226).",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 87,
+     "quote": "**Readings:**"
+    }
+   ]
+  },
+  {
+   "feature": "esp32s3",
+   "does": "Chip temperature, Wi-Fi, free memory, uptime; ping split into its legs.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 50,
+     "quote": "a line with its battery, Wi-Fi and uptime"
+    },
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 70,
+     "quote": "**Latency:**"
+    }
+   ]
+  },
+  {
+   "feature": "servo-power",
+   "does": "Servo power on and off (head extras).",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 79,
+     "quote": "Servo power on/off"
+    }
+   ]
+  },
+  {
+   "feature": "power-button",
+   "does": "A press shows in Events (short or long).",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 289,
+     "quote": "`power_button` with `{\"press\": \"short\" or \"long\"}`"
+    }
+   ]
+  },
+  {
+   "feature": "usb",
+   "does": "USB plugged and unplugged show in Events; USB voltage under Sensors.",
+   "sources": [
+    {
+     "repo": "q41eu-raw",
+     "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+     "path": "readme.md",
+     "line": 289,
+     "quote": "`usb_plugged` /"
+    }
+   ]
+  }
+ ],
+ "screen": {
+  "image": "raw-readings.png",
+  "sources": [
+   {
+    "repo": "i41eu-assets",
+    "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+    "path": "renders.json",
+    "line": 17,
+    "quote": "\"screen\": \"screens/raw-readings.png\""
+   }
+  ]
+ }
+}

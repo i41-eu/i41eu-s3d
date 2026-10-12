@@ -1,0 +1,1806 @@
+{
+ "about": "The robot's components (each physical part once: where it is, its windows) and their features (what software gets from them: sensors, actuators, other parts) (ports, slots, buttons the firmware does not read; kind other) as Embody Mode exposes them (the i41eu-embody firmware). where: a robot3d part and an offset in millimetres in robot3d's rest space (Y up, facing +Z; the part's node in robot.glb); how: exact (it is there), joint (the joint it moves), inside (somewhere in that part), near (the docs say roughly where). No where: the docs do not say where it is. out: from where the marker is seen (a direction at rest; it sits where a ray from outside along it meets the robot's surface; default: out from the yaw axis). area screen: the screen's rectangle, outlined. with: a feature of these parts (no marker of its own). A where's source may be M5Stack's annotated picture of the robot (StackChan docs): its label quoted. shape: its outline on the robot (mm, on the surface facing out): a circle (r) or a rect (w across, h up, corners r); free: at the offset itself.",
+ "components": [
+  {
+   "id": "ft6336u",
+   "name": "Touch screen controller",
+   "chip": "FT6336U",
+   "kind": "sensor",
+   "where": {
+    "part": "core",
+    "offset": [
+     0,
+     44.5,
+     33.6
+    ],
+    "how": "exact",
+    "area": "screen",
+    "out": [
+     0,
+     0,
+     1
+    ],
+    "note": "the screen's centre on the CoreS3's front",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/export.go",
+     "line": 22,
+     "quote": "func Screen()"
+    }
+   },
+   "features": [
+    {
+     "id": "touch-screen",
+     "name": "Touch screen",
+     "kind": "sensor",
+     "does": "Two fingers on the screen: taps with x/y, double tap, long press, touch_down/touch_up per finger, and a 50 Hz raw stream of both fingers while a browser asks.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 18,
+       "quote": "| Touch screen | FT6336U (0x38), 2 points"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 144,
+       "quote": "| Touch | the board's FT6336 driver reads both points"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ili9342",
+   "name": "Display",
+   "chip": "ILI9342C/E",
+   "kind": "actuator",
+   "where": {
+    "part": "core",
+    "offset": [
+     0,
+     44.5,
+     33.6
+    ],
+    "how": "exact",
+    "area": "screen",
+    "out": [
+     0,
+     0,
+     1
+    ],
+    "note": "the screen's centre on the CoreS3's front",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/export.go",
+     "line": 22,
+     "quote": "func Screen()"
+    }
+   },
+   "features": [
+    {
+     "id": "display",
+     "name": "Display",
+     "kind": "actuator",
+     "does": "The 2.0\" 320x240 screen: face, emotions, speech, stickers, pictures, QR codes, blank screen, brightness.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 39,
+       "quote": "| Display | 2.0\" ILI9342C/E, 320x240"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gc0308",
+   "name": "Camera",
+   "chip": "GC0308",
+   "kind": "sensor",
+   "where": {
+    "part": "core",
+    "offset": [
+     0,
+     23.2,
+     33.6
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     0,
+     1
+    ],
+    "shape": {
+     "kind": "circle",
+     "r": 2.4
+    },
+    "note": "under the screen, the ring (M5Stack's picture: GC0308 @0.3 megapixels; the ring as robot3d draws it)",
+    "source": {
+     "url": "https://docs.m5stack.com/en/StackChan",
+     "quote": "GC0308"
+    }
+   },
+   "features": [
+    {
+     "id": "camera",
+     "name": "Camera",
+     "kind": "sensor",
+     "does": "Live JPEG video at 320x240 (5 fps) or 640x480 (about 2.3 fps), 640x480 snapshots, mirror/flip, raw sensor registers; refused while the camera and microphone are off on the robot.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 19,
+       "quote": "| Camera | GC0308 (0x21), up to 640x480"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 67,
+       "quote": "**Camera and microphone, set on the robot:**"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "es7210",
+   "name": "Microphones",
+   "chip": "ES7210 codec",
+   "kind": "sensor",
+   "where": {
+    "part": "core",
+    "offset": [
+     13.5,
+     23.2,
+     33.6
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     0,
+     1
+    ],
+    "shape": {
+     "kind": "circle",
+     "r": 1.2
+    },
+    "note": "under the screen, the two outer dots (M5Stack's picture: DUAL MIC); marked at the one on the robot's left",
+    "source": {
+     "url": "https://docs.m5stack.com/en/StackChan",
+     "quote": "DUAL MIC"
+    }
+   },
+   "features": [
+    {
+     "id": "microphones",
+     "name": "Microphones",
+     "kind": "sensor",
+     "does": "Two channels at 24 kHz sent raw: channel 1 the microphone, channel 0 the speaker reference (for echo cancellation).",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 20,
+       "quote": "| Microphones | 2x, ES7210 codec (0x40)"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 136,
+       "quote": "| Microphone | a FreeRTOS task reads all codec input channels at 24 kHz"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bmi270",
+   "name": "Motion sensor",
+   "chip": "BMI270, with the BMM150 on its AUX bus",
+   "kind": "sensor",
+   "where": {
+    "part": "core",
+    "offset": [
+     9,
+     70.5,
+     26
+    ],
+    "how": "inside",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 6,
+     "h": 6,
+     "r": 1
+    },
+    "note": "the IMU sits in the CoreS3 (HARDWARE.md line 21): somewhere in the CoreS3, marked as a chip on its top beside the processor",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/mesh.go",
+     "line": 31,
+     "quote": "var coreCentre"
+    }
+   },
+   "features": [
+    {
+     "id": "imu",
+     "name": "Accelerometer and gyroscope",
+     "kind": "sensor",
+     "does": "Acceleration per axis (g) and rotation rate (°/s) in telemetry, the shake event, and a raw 100 Hz stream while a browser asks; it sits in the CoreS3, so it tilts with the head.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 21,
+       "quote": "| Accelerometer + gyroscope | BMI270 (0x69)"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 137,
+       "quote": "| IMU stream | `imu_stream {\"on\"}`"
+      }
+     ]
+    },
+    {
+     "id": "magnetometer",
+     "name": "Magnetometer (compass)",
+     "kind": "sensor",
+     "does": "The magnetic field per axis (µT, compensated, and raw counts) at 10 Hz; a compass needs calibration (the speaker's and servos' magnets).",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 22,
+       "quote": "| Magnetometer (compass) | BMM150 (0x10) on the BMI270's AUX I2C"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ltr553",
+   "name": "Light and proximity sensor",
+   "chip": "LTR-553ALS-WA",
+   "kind": "sensor",
+   "windows": [
+    {
+     "id": "ir-led",
+     "name": "IR LED",
+     "where": {
+      "part": "core",
+      "offset": [
+       6.5,
+       23.2,
+       33.6
+      ],
+      "how": "near",
+      "out": [
+       0,
+       0,
+       1
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 4.6,
+       "h": 1.9,
+       "r": 0.95
+      },
+      "note": "under the screen, the LTR-553's two windows right of the camera: its IR LED (pulsing, q41eu-raw readme line 303) and its detector; which dot is which is not in the docs",
+      "source": {
+       "repo": "q41eu-raw",
+       "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+       "path": "readme.md",
+       "line": 333,
+       "quote": "whose IR LED next to the camera pulses"
+      }
+     }
+    },
+    {
+     "id": "detector",
+     "name": "detector",
+     "where": {
+      "part": "core",
+      "offset": [
+       7.5,
+       23.2,
+       33.6
+      ],
+      "how": "near",
+      "out": [
+       0,
+       0,
+       1
+      ],
+      "shape": {
+       "kind": "circle",
+       "r": 0.75
+      },
+      "note": "the LTR-553's detector window, the outer of its two dots (the other, nearer the camera, taken as the proximity's IR LED; not in the docs)",
+      "source": {
+       "url": "https://docs.m5stack.com/en/StackChan",
+       "quote": "LTR-553ALS-WA"
+      }
+     }
+    }
+   ],
+   "features": [
+    {
+     "id": "light",
+     "name": "Ambient light",
+     "kind": "sensor",
+     "does": "The room's light in lux; auto-brightness sets the backlight from it (on by default).",
+     "on": [
+      "detector"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 23,
+       "quote": "| Proximity + ambient light | LTR-553ALS-WA (0x23)"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 140,
+       "quote": "(LTR-553ALS in the CoreS3, 0x23)"
+      }
+     ]
+    },
+    {
+     "id": "proximity",
+     "name": "Proximity",
+     "kind": "sensor",
+     "does": "Something near: proximity counts (0–2047), proximity_near/proximity_far events; an approach wakes the screen. Its IR LED next to the camera pulses about 10 times a second.",
+     "on": [
+      "ir-led",
+      "detector"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 23,
+       "quote": "| Proximity + ambient light | LTR-553ALS-WA (0x23)"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 140,
+       "quote": "(LTR-553ALS in the CoreS3, 0x23)"
+      },
+      {
+       "repo": "q41eu-raw",
+       "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+       "path": "readme.md",
+       "line": 333,
+       "quote": "| `proximity` | `{\"on\": bool}`"
+      }
+     ],
+     "excludes": [
+      {
+       "feature": "ir-transmitter",
+       "source": {
+        "repo": "i41eu-embody",
+        "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+        "line": 44,
+        "quote": "The proximity sensor pauses while it sends."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "si12t",
+   "name": "Head touch",
+   "chip": "Si12T",
+   "kind": "sensor",
+   "windows": [
+    {
+     "id": "back",
+     "name": "back zone",
+     "where": {
+      "part": "body",
+      "offset": [
+       0,
+       70.5,
+       -19.5
+      ],
+      "how": "near",
+      "out": [
+       0,
+       1,
+       0
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 40,
+       "h": 12,
+       "r": 2
+      },
+      "note": "the head's top, the third z0, at the back (the driver's position runs z0 -100, z1 0, z2 +100; a swipe from z0 to z2 is forward); the pads' exact places are not in the docs",
+      "source": {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/hal/hal_head_touch.cpp",
+       "line": 36,
+       "quote": "intensity[0] * (-100)"
+      }
+     }
+    },
+    {
+     "id": "middle",
+     "name": "middle zone",
+     "where": {
+      "part": "body",
+      "offset": [
+       0,
+       70.5,
+       -6.5
+      ],
+      "how": "near",
+      "out": [
+       0,
+       1,
+       0
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 40,
+       "h": 12,
+       "r": 2
+      },
+      "note": "the head's top, the third z1, in the middle (the driver's position runs z0 -100, z1 0, z2 +100; a swipe from z0 to z2 is forward); the pads' exact places are not in the docs",
+      "source": {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/hal/hal_head_touch.cpp",
+       "line": 36,
+       "quote": "intensity[0] * (-100)"
+      }
+     }
+    },
+    {
+     "id": "front",
+     "name": "front zone",
+     "where": {
+      "part": "body",
+      "offset": [
+       0,
+       70.5,
+       6.5
+      ],
+      "how": "near",
+      "out": [
+       0,
+       1,
+       0
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 40,
+       "h": 12,
+       "r": 2
+      },
+      "note": "the head's top, the third z2, at the front (the driver's position runs z0 -100, z1 0, z2 +100; a swipe from z0 to z2 is forward); the pads' exact places are not in the docs",
+      "source": {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/hal/hal_head_touch.cpp",
+       "line": 36,
+       "quote": "intensity[0] * (-100)"
+      }
+     }
+    }
+   ],
+   "features": [
+    {
+     "id": "head-press",
+     "name": "Head press",
+     "kind": "sensor",
+     "does": "A press on the head: head_press with each zone's intensity (0–3); it wakes the screen.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 24,
+       "quote": "`head_press` with per-zone intensity (0–3)"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 151,
+       "quote": "head-touch press (zones `z0`–`z2`, 0–3)"
+      }
+     ]
+    },
+    {
+     "id": "head-release",
+     "name": "Head release",
+     "kind": "sensor",
+     "does": "The hand lifted: head_release with how long the touch lasted.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 24,
+       "quote": "`head_release` with duration"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 151,
+       "quote": "release (`ms`)"
+      }
+     ]
+    },
+    {
+     "id": "head-swipe",
+     "name": "Head swipe",
+     "kind": "sensor",
+     "does": "A stroke along the head, forward or back, across the zones.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 24,
+       "quote": "swipe forward/back"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 151,
+       "quote": "and swipes"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "servo-yaw",
+   "name": "Yaw servo",
+   "chip": "Feetech SCS0009",
+   "kind": "actuator",
+   "where": {
+    "part": "servo",
+    "offset": [
+     0,
+     12.5,
+     0
+    ],
+    "how": "joint",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "circle",
+     "r": 25,
+     "free": true
+    },
+    "note": "the yaw joint: the servo body turns on the plate about the yaw axis; a ring round the turntable",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/mesh.go",
+     "line": 114,
+     "quote": "StackChan-ServoBody.stl"
+    }
+   },
+   "features": [
+    {
+     "id": "yaw-servo",
+     "name": "Head yaw servo",
+     "kind": "actuator",
+     "does": "Turns the head left and right: angle ±128°, nod/shake/home, continuous rotation for 1–30 s after a Yes on the robot; slack at rest, hold keeps it powered.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 40,
+       "quote": "| Head yaw servo (360°) | SCS0009"
+      },
+      {
+       "repo": "i41eu-assets",
+       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "path": "robot3d/export.go",
+       "line": 17,
+       "quote": "The yaw axis is the Y axis"
+      }
+     ]
+    },
+    {
+     "id": "yaw-servo-feedback",
+     "name": "Yaw servo feedback",
+     "kind": "sensor",
+     "does": "Angle, load (%), temperature, supply voltage, raw position, speed and current, moving.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 25,
+       "quote": "| Servo feedback | 2x Feetech SCS0009 (serial bus)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "servo-pitch",
+   "name": "Pitch servo",
+   "chip": "Feetech SCS0009",
+   "kind": "actuator",
+   "where": {
+    "part": "pitch-servo",
+    "offset": [
+     16.5,
+     38.6,
+     -17
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 9,
+     "h": 4,
+     "r": 1
+    },
+    "note": "the pitch servo (the black box robot3d draws in the servo body's pocket), seen through the open back under the main board (the owner's photo of the back)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/mesh.go",
+     "line": 63,
+     "quote": "pitchServoX0, pitchServoX1 = 11.0, 22.0"
+    }
+   },
+   "features": [
+    {
+     "id": "pitch-servo",
+     "name": "Head pitch servo",
+     "kind": "actuator",
+     "does": "Tilts the head up and down: angle 5–85° (M5Stack's safe range), nod; slack at rest.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 41,
+       "quote": "| Head pitch servo (90°) | SCS0009"
+      }
+     ]
+    },
+    {
+     "id": "pitch-servo-feedback",
+     "name": "Pitch servo feedback",
+     "kind": "sensor",
+     "does": "Angle, load (%), temperature, supply voltage, raw position, speed and current, moving.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 25,
+       "quote": "| Servo feedback | 2x Feetech SCS0009 (serial bus)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "irm56384",
+   "name": "IR receiver",
+   "chip": "IRM56384",
+   "kind": "sensor",
+   "where": {
+    "part": "top-board",
+    "offset": [
+     0.3,
+     70.2,
+     17.6
+    ],
+    "how": "near",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "circle",
+     "r": 0.8
+    },
+    "note": "the IRM56384 on the touch board (HARDWARE.md line 26), the head's top: marked at the small dot in front of the middle tab; not sure (the owner wonders if it shares the proximity sensor's detector)",
+    "source": {
+     "url": "https://docs.m5stack.com/en/StackChan",
+     "quote": "IR Tx / Rx"
+    }
+   },
+   "features": [
+    {
+     "id": "ir-receiver",
+     "name": "IR receiver",
+     "kind": "sensor",
+     "does": "Infrared remote codes: ir_received with the raw timings, NEC decoded.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 26,
+       "quote": "| IR receiver | IRM56384 on the Touch board"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ir-led",
+   "name": "IR LED",
+   "chip": "IR LED (S8050, G5)",
+   "kind": "actuator",
+   "where": {
+    "part": "body",
+    "offset": [
+     0.3,
+     70.5,
+     14.5
+    ],
+    "how": "near",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "circle",
+     "r": 1.6
+    },
+    "note": "on the head's top behind the CoreS3, in the round hole of the middle tab (the owner: the IR LED is that hole; HARDWARE.md: on top, near the display unit)",
+    "source": {
+     "url": "https://docs.m5stack.com/en/StackChan",
+     "quote": "IR Tx / Rx"
+    }
+   },
+   "features": [
+    {
+     "id": "ir-transmitter",
+     "name": "IR transmitter",
+     "kind": "actuator",
+     "does": "Sends infrared remote codes (NEC or raw timings, repeat, frames); weak, so short range. It points up.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 44,
+       "quote": "| IR transmitter | IR LED on top of the robot near the display unit"
+      }
+     ],
+     "excludes": [
+      {
+       "feature": "proximity",
+       "source": {
+        "repo": "i41eu-embody",
+        "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+        "line": 44,
+        "quote": "The proximity sensor pauses while it sends."
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st25r3916",
+   "name": "NFC reader",
+   "chip": "ST25R3916",
+   "kind": "sensor",
+   "where": {
+    "part": "body",
+    "offset": [
+     0,
+     70.5,
+     -6.5
+    ],
+    "how": "near",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "circle",
+     "r": 8
+    },
+    "note": "on the head's top: a card laid on the head touch panel is read (the owner, with the robot); the antenna's exact place is not in the docs",
+    "source": {
+     "repo": "i41eu-embody",
+     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+     "line": 27,
+     "quote": "NFC reader | ST25R3916 (0x50)"
+    }
+   },
+   "features": [
+    {
+     "id": "nfc",
+     "name": "NFC reader",
+     "kind": "sensor",
+     "does": "NFC tags held to the robot: nfc_tag with UID, type and the first NDEF record (URI or text) of Type 2 tags, nfc_removed; polled twice a second.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 27,
+       "quote": "| NFC reader | ST25R3916 (0x50), IRQ not wired"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 148,
+       "quote": "| NFC | `hal/drivers/ST25R3916`"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "axp2101",
+   "name": "Power management",
+   "chip": "AXP2101",
+   "kind": "sensor",
+   "windows": [
+    {
+     "id": "battery",
+     "name": "battery",
+     "where": {
+      "part": "servo",
+      "offset": [
+       0,
+       25,
+       -20
+      ],
+      "how": "near",
+      "out": [
+       0,
+       0,
+       -1
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 20,
+       "h": 12,
+       "r": 2
+      },
+      "note": "in the back, under the head's board (M5Stack's picture of the open back: 550 mAh BATTERY)",
+      "source": {
+       "url": "https://docs.m5stack.com/en/StackChan",
+       "quote": "550 mAh BATTERY"
+      }
+     }
+    },
+    {
+     "id": "usb",
+     "name": "USB-C",
+     "where": {
+      "part": "core",
+      "offset": [
+       -27,
+       42.8,
+       26.25
+      ],
+      "how": "exact",
+      "out": [
+       -1,
+       0,
+       0
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 3.6,
+       "h": 9.6,
+       "r": 1.8
+      },
+      "note": "the CoreS3's USB-C on its right side (the stand's port is not modelled)",
+      "source": {
+       "repo": "i41eu-assets",
+       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "path": "robot3d/shade.go",
+       "line": 132,
+       "quote": "roundRect(p.Z-cz, p.Y+0.7, 1.5, 4.4, 1.4)"
+      }
+     }
+    },
+    {
+     "id": "button",
+     "name": "power button",
+     "where": {
+      "part": "core",
+      "offset": [
+       -27,
+       57.5,
+       26.25
+      ],
+      "how": "exact",
+      "out": [
+       -1,
+       0,
+       0
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 7.2,
+       "h": 6.4,
+       "r": 1.8
+      },
+      "note": "on the CoreS3's right side",
+      "source": {
+       "repo": "i41eu-assets",
+       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "path": "robot3d/shade.go",
+       "line": 126,
+       "quote": "roundRect(p.Z-cz, p.Y-14, 3, 2.6, 1.2)"
+      }
+     }
+    },
+    {
+     "id": "led",
+     "name": "power LED",
+     "where": {
+      "part": "core",
+      "offset": [
+       6.8,
+       16.5,
+       29.2
+      ],
+      "how": "exact",
+      "out": [
+       0,
+       -1,
+       0
+      ],
+      "shape": {
+       "kind": "circle",
+       "r": 1.2
+      },
+      "note": "on the CoreS3's bottom, between the microSD slot and the reboot button (M5Stack's photo of the bottom)",
+      "source": {
+       "repo": "i41eu-assets",
+       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "path": "robot3d/shade.go",
+       "line": 108,
+       "quote": "the power / charge LED"
+      }
+     }
+    }
+   ],
+   "features": [
+    {
+     "id": "battery",
+     "name": "Battery (PMU)",
+     "kind": "sensor",
+     "does": "Battery %, charging, battery/USB/system voltage, charge state and phase, die temperature; USB and battery plugged/removed events.",
+     "on": [
+      "battery"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 28,
+       "quote": "| Battery (PMU) | AXP2101 (0x34)"
+      }
+     ]
+    },
+    {
+     "id": "usb",
+     "name": "USB ports",
+     "kind": "sensor",
+     "does": "A computer or a charger plugged in (usb_data, core_vbus_v, plug events); which of the two ports (head or stand) cannot be told.",
+     "on": [
+      "usb"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 30,
+       "quote": "| USB ports (head CoreS3 + stand)"
+      }
+     ]
+    },
+    {
+     "id": "power-button",
+     "name": "Power button",
+     "kind": "sensor",
+     "does": "power_button with a short or long press; a short press wakes the screen; held about 4 s it powers off.",
+     "on": [
+      "button"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 31,
+       "quote": "| Power button | on the AXP2101 PWRON"
+      }
+     ]
+    },
+    {
+     "id": "power-led",
+     "name": "Power/charge LED",
+     "kind": "actuator",
+     "does": "The red power LED: on, off, blink, fast, or driven by the charger.",
+     "on": [
+      "led"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 45,
+       "quote": "| Power/charge LED (red) | on the AXP2101 (CHGLED, reg 0x69)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ina226",
+   "name": "Battery monitor (body)",
+   "chip": "INA226",
+   "kind": "sensor",
+   "where": {
+    "part": "core",
+    "offset": [
+     -8,
+     55,
+     17.4
+    ],
+    "how": "near",
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 14,
+     "h": 10,
+     "r": 2
+    },
+    "note": "the INA226 on the head's main board (\"body\", HARDWARE.md line 29), seen through the open back; its exact place is not in the docs",
+    "source": {
+     "repo": "i41eu-embody",
+     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+     "line": 29,
+     "quote": "Battery monitor (body) | INA226 (0x41)"
+    }
+   },
+   "features": [
+    {
+     "id": "battery-monitor",
+     "name": "Battery monitor (body)",
+     "kind": "sensor",
+     "does": "The body battery's voltage, current (+ drain, − charging), power and raw shunt voltage.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 29,
+       "quote": "| Battery monitor (body) | INA226 (0x41)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bm8563",
+   "name": "Real-time clock",
+   "chip": "BM8563",
+   "kind": "sensor",
+   "where": {
+    "part": "core",
+    "offset": [
+     -7.5,
+     70.5,
+     26
+    ],
+    "how": "inside",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 15,
+     "h": 11,
+     "r": 2
+    },
+    "note": "the BM8563 is in the CoreS3 (HARDWARE.md line 32): somewhere in the CoreS3, marked on its top",
+    "source": {
+     "repo": "i41eu-embody",
+     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+     "line": 32,
+     "quote": "BM8563 (0x51)"
+    }
+   },
+   "features": [
+    {
+     "id": "rtc",
+     "name": "Real-time clock",
+     "kind": "sensor",
+     "does": "The time (rtc_unix in telemetry).",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 32,
+       "quote": "| RTC | BM8563 (0x51)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "esp32s3",
+   "name": "Processor",
+   "chip": "ESP32-S3",
+   "kind": "sensor",
+   "where": {
+    "part": "core",
+    "offset": [
+     -7.5,
+     70.5,
+     26
+    ],
+    "how": "inside",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 15,
+     "h": 11,
+     "r": 2
+    },
+    "note": "the ESP32-S3 is in the CoreS3: marked on its top",
+    "source": {
+     "repo": "i41eu-embody",
+     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+     "line": 33,
+     "quote": "| Chip temperature, Wi-Fi | ESP32-S3"
+    }
+   },
+   "features": [
+    {
+     "id": "wifi",
+     "name": "Wi-Fi signal",
+     "kind": "sensor",
+     "does": "The Wi-Fi signal strength (RSSI), in the telemetry every 2 s.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 33,
+       "quote": "Wi-Fi RSSI"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 150,
+       "quote": "Wi-Fi RSSI"
+      }
+     ]
+    },
+    {
+     "id": "free-memory",
+     "name": "Free memory",
+     "kind": "sensor",
+     "does": "The free heap, in the telemetry every 2 s.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 33,
+       "quote": "free memory"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 150,
+       "quote": "free heap"
+      }
+     ]
+    },
+    {
+     "id": "chip-temp",
+     "name": "Chip temperature",
+     "kind": "sensor",
+     "does": "The ESP32-S3's own temperature sensor (chip_temp_c), in the telemetry.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 33,
+       "quote": "chip temperature (`chip_temp_c`)"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 150,
+       "quote": "`chip_temp_c`"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rgb-leds",
+   "name": "RGB LEDs",
+   "chip": "WS2812C (PY32L020)",
+   "kind": "actuator",
+   "windows": [
+    {
+     "id": "left",
+     "name": "left bar",
+     "where": {
+      "part": "led-bar-left",
+      "offset": [
+       -26.1,
+       69.4,
+       -1.65
+      ],
+      "how": "exact",
+      "out": [
+       -1,
+       0.3,
+       0
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 30.5,
+       "h": 4.2,
+       "r": 2
+      },
+      "note": "the left light bar, on the left as you face the screen (-X, the robot's own right side; the firmware's leftNeonLight), along the top; picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
+      "source": {
+       "repo": "i41eu-assets",
+       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "path": "robot3d/shade.go",
+       "line": 225,
+       "quote": "own right side, -X (the owner's look at the robot, 2026-10-11)"
+      },
+      "see": [
+       "body",
+       "top-board"
+      ]
+     }
+    },
+    {
+     "id": "right",
+     "name": "right bar",
+     "where": {
+      "part": "led-bar-right",
+      "offset": [
+       26.1,
+       69.4,
+       -1.65
+      ],
+      "how": "exact",
+      "out": [
+       1,
+       0.3,
+       0
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 30.5,
+       "h": 4.2,
+       "r": 2
+      },
+      "note": "the right light bar, on the right as you face the screen (+X; the firmware's rightNeonLight), along the top; picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
+      "source": {
+       "repo": "i41eu-assets",
+       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "path": "robot3d/shade.go",
+       "line": 225,
+       "quote": "own right side, -X (the owner's look at the robot, 2026-10-11)"
+      },
+      "see": [
+       "body",
+       "top-board"
+      ]
+     }
+    }
+   ],
+   "features": [
+    {
+     "id": "leds-left",
+     "name": "RGB LEDs, left",
+     "kind": "actuator",
+     "does": "Six of the 12 RGB LEDs (0–5, 0 at the front) under the left light bar (left as you face the screen): a colour per side or per LED, and effects (rainbow, breathe, chase, blink).",
+     "on": [
+      "left"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 42,
+       "quote": "| RGB LEDs, 12 | WS2812C x12, two rows"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 139,
+       "quote": "`pixels` sets up to 12 single LEDs (left 0–5, then right 6–11"
+      }
+     ]
+    },
+    {
+     "id": "leds-right",
+     "name": "RGB LEDs, right",
+     "kind": "actuator",
+     "does": "Six of the 12 RGB LEDs (6–11) under the right light bar (right as you face the screen): a colour per side or per LED, and effects (rainbow, breathe, chase, blink).",
+     "on": [
+      "right"
+     ],
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 42,
+       "quote": "| RGB LEDs, 12 | WS2812C x12, two rows"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 139,
+       "quote": "`pixels` sets up to 12 single LEDs (left 0–5, then right 6–11"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "aw88298",
+   "name": "Speaker",
+   "chip": "AW88298 1 W",
+   "kind": "actuator",
+   "where": {
+    "part": "core",
+    "offset": [
+     27,
+     43.5,
+     23.5
+    ],
+    "how": "near",
+    "out": [
+     1,
+     0,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 8,
+     "h": 32,
+     "r": 2
+    },
+    "note": "the CoreS3's speaker, behind the band of holes on its left side (M5Stack's photos of the CoreS3)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/shade.go",
+     "line": 78,
+     "quote": "left: the vents, a narrow staggered band"
+    }
+   },
+   "features": [
+    {
+     "id": "speaker",
+     "name": "Speaker",
+     "kind": "actuator",
+     "does": "Sound: talk from a browser, sound files, beeps (24 kHz PCM), volume; the mouth moves while it plays.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 43,
+       "quote": "| Speaker | AW88298 1 W (0x36)"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/README.md",
+       "line": 138,
+       "quote": "| Speaker | binary `0x03` PCM"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "servo-supply",
+   "name": "Servo supply switch",
+   "chip": "PY32 pin 0",
+   "kind": "actuator",
+   "where": {
+    "part": "core",
+    "offset": [
+     -8,
+     55,
+     17.4
+    ],
+    "how": "near",
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 14,
+     "h": 10,
+     "r": 2
+    },
+    "note": "PY32 pin 0, the body's expander on the head's main board, seen through the open back; its exact place is not in the docs",
+    "source": {
+     "repo": "i41eu-embody",
+     "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+     "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+     "line": 46,
+     "quote": "Servo power | PY32 pin 0"
+    }
+   },
+   "features": [
+    {
+     "id": "servo-power",
+     "name": "Servo power",
+     "kind": "actuator",
+     "does": "Switches the servos' supply: both head servos powered or limp.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 46,
+       "quote": "| Servo power | PY32 pin 0"
+      },
+      {
+       "repo": "q41eu-raw",
+       "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+       "path": "readme.md",
+       "line": 323,
+       "quote": "| `servo_power` | `{\"on\": bool}`"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grove-a",
+   "name": "Port A (I2C, red)",
+   "chip": "CoreS3 Grove port A",
+   "kind": "other",
+   "where": {
+    "part": "core",
+    "offset": [
+     -27,
+     30,
+     26.25
+    ],
+    "how": "exact",
+    "out": [
+     -1,
+     0,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 5.8,
+     "h": 8.8,
+     "r": 1
+    },
+    "note": "on the CoreS3's right side, below the USB-C (the red Grove port)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/shade.go",
+     "line": 135,
+     "quote": "roundRect(p.Z-cz, p.Y+13.5, 2.5, 4, 0.4)"
+    }
+   },
+   "features": [
+    {
+     "id": "port-a",
+     "name": "Port A (I2C, red)",
+     "kind": "other",
+     "does": "A Grove I2C port on the CoreS3's right side; the firmware's laser accessory would use it (GPIO2). Not used by Embody Mode yet.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 49,
+       "quote": "CoreS3 Port A/B/C"
+      },
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 47,
+       "quote": "GPIO2 = CoreS3 **Port A**"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grove-b",
+   "name": "Port B (GPIO, black)",
+   "chip": "Grove port B",
+   "kind": "other",
+   "where": {
+    "part": "top-board",
+    "offset": [
+     -10.3,
+     70.45,
+     15.55
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 11.4,
+     "h": 5.1,
+     "r": 1
+    },
+    "note": "on the head's top behind the CoreS3, on the robot's right (M5Stack's photos: GPIO PORT.B)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/shade.go",
+     "line": 211,
+     "quote": "box(p.X, p.Z, -16.0, 13.0, -4.6, 18.1)"
+    }
+   },
+   "features": [
+    {
+     "id": "port-b",
+     "name": "Port B (GPIO, black)",
+     "kind": "other",
+     "does": "A Grove GPIO port on the head's top. Not used by Embody Mode yet.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 49,
+       "quote": "CoreS3 Port A/B/C"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grove-c",
+   "name": "Port C (UART, teal)",
+   "chip": "Grove port C",
+   "kind": "other",
+   "where": {
+    "part": "top-board",
+    "offset": [
+     11.25,
+     70.45,
+     15.55
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     1,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 11.5,
+     "h": 5.1,
+     "r": 1
+    },
+    "note": "on the head's top behind the CoreS3, on the robot's left (M5Stack's photos: UART PORT.C)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/shade.go",
+     "line": 206,
+     "quote": "box(p.X, p.Z, 5.5, 13.0, 17.0, 18.1)"
+    }
+   },
+   "features": [
+    {
+     "id": "port-c",
+     "name": "Port C (UART, teal)",
+     "kind": "other",
+     "does": "A Grove UART port on the head's top. Not used by Embody Mode yet.",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 49,
+       "quote": "CoreS3 Port A/B/C"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "microsd-slot",
+   "name": "microSD slot",
+   "chip": "microSD",
+   "kind": "other",
+   "where": {
+    "part": "core",
+    "offset": [
+     -6.5,
+     16.5,
+     25.85
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     -1,
+     0
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 14,
+     "h": 2.4,
+     "r": 1
+    },
+    "note": "on the CoreS3's bottom, at the front (M5Stack's photo of the bottom)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/shade.go",
+     "line": 106,
+     "quote": "box(p.X, p.Z, -13, -0.5, 0, 0.5)"
+    }
+   },
+   "features": [
+    {
+     "id": "microsd",
+     "name": "microSD slot",
+     "kind": "other",
+     "does": "A microSD card slot on the CoreS3. Not used yet (designed: per-app folders next to the internal store).",
+     "sources": [
+      {
+       "repo": "i41eu-embody",
+       "ref": "a610a233652f060dd5ded1c578a3259314a01615",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 48,
+       "quote": "| microSD | slot | not used"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reset-button",
+   "name": "Reboot button",
+   "chip": "CoreS3 reset",
+   "kind": "other",
+   "where": {
+    "part": "core",
+    "offset": [
+     14.2,
+     16.5,
+     27.3
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     -1,
+     0
+    ],
+    "shape": {
+     "kind": "circle",
+     "r": 3.2
+    },
+    "note": "on the CoreS3's bottom, on the robot's left (M5Stack's photo of the bottom)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "path": "robot3d/shade.go",
+     "line": 113,
+     "quote": "math.Hypot(p.X-14.2, p.Z-1.45)"
+    }
+   },
+   "features": [
+    {
+     "id": "reboot-button",
+     "name": "Reboot button",
+     "kind": "other",
+     "does": "Press: reboot; held 3 s: download mode for flashing (the green LED on). Not read by the firmware.",
+     "sources": [
+      {
+       "url": "https://docs.m5stack.com/en/StackChan",
+       "quote": "PRESS: REBOOT HOLD 3S: ENTER DOWNLOAD MODE"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
