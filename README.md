@@ -97,7 +97,7 @@ A new app is a new `data/apps/<app>.json`; a new component or feature a new entr
 
 ## Trademark
 
-Stack-chan is a registered trademark of Shinya Ishikawa; this project is independent of it.
+Stack-chan was created by Shinya Ishikawa and the Stack-chan community ([github.com/stack-chan/stack-chan](https://github.com/stack-chan/stack-chan)); this project is independent of it and of M5Stack.
 
 ## License
 
