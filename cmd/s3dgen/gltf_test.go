@@ -324,7 +324,9 @@ func TestTextures(t *testing.T) {
 		{"the board's ribbon cable, through the open back", "core", robot3d.V3{X: -7, Y: 53.5, Z: 17.4}, robot3d.V3{Z: -1}},
 		{"the board's white connector", "core", robot3d.V3{X: 11.5, Y: 61.2, Z: 17.4}, robot3d.V3{Z: -1}},
 		{"the left label's dark end", "body", robot3d.V3{X: 27.03, Y: 60, Z: 13.5}, robot3d.V3{X: 1}},
-		{"the body's red LED", "servo", robot3d.V3{X: 0.25, Y: 14.4, Z: -23.15}, robot3d.V3{Z: -1}},
+		{"the body's red LED", "servo", robot3d.V3{X: 0.25, Y: 14.3, Z: -23.15}, robot3d.V3{Z: -1}},
+		{"the pitch servo's light grey body", "pitch-servo", robot3d.V3{X: -2.4, Y: 47.3, Z: -22}, robot3d.V3{Z: -1}},
+		{"the pitch servo's dark horn", "pitch-servo", robot3d.V3{X: 16.5, Y: 44, Z: -17}, robot3d.V3{Z: -1}},
 		{"the back cover", "servo-cover", robot3d.V3{X: 0, Y: 25, Z: -22.39}, robot3d.V3{Z: -1}},
 		{"the stand's USB-C", "plate", robot3d.V3{X: 3.1, Y: 7.55, Z: -23.3}, robot3d.V3{Z: -1}},
 	} {

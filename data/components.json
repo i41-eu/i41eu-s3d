@@ -616,10 +616,10 @@
     "note": "the yaw joint: the servo body turns on the plate's ring about the yaw axis; a ring round the turntable",
     "source": {
      "repo": "i41eu-assets",
-     "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+     "ref": "7aa107c5c2eab7676ae65f1746a4c2c2fb0123e0",
      "path": "robot3d/mesh.go",
      "line": 29,
-     "quote": "servoBottom = 11.2"
+     "quote": "servoBottom = 11.1"
     }
    },
    "features": [
@@ -670,9 +670,9 @@
    "where": {
     "part": "pitch-servo",
     "offset": [
-     16.5,
-     41.3,
-     -17
+     -2.4,
+     47.3,
+     -22
     ],
     "how": "exact",
     "out": [
@@ -682,17 +682,17 @@
     ],
     "shape": {
      "kind": "rect",
-     "w": 9,
-     "h": 4,
+     "w": 27,
+     "h": 5,
      "r": 1
     },
-    "note": "the pitch servo (the dark box robot3d draws in the servo body's pocket, round the pitch axis), seen through the open back under the main board (the owner's photo of the back; M5Stack's drawing of the back: the horn there)",
+    "note": "the pitch servo, its light grey body under the head's board seen through the open back, its dark horn on the left (M5Stack's annotated photo of the back: TTL SERVO; M5Stack's drawing of the back)",
     "source": {
      "repo": "i41eu-assets",
-     "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+     "ref": "7aa107c5c2eab7676ae65f1746a4c2c2fb0123e0",
      "path": "robot3d/mesh.go",
-     "line": 68,
-     "quote": "pitchServoY0, pitchServoY1 = servoBottom + 27.5, servoBottom + 39.0"
+     "line": 72,
+     "quote": "pitchBodyX0"
     }
    },
    "features": [
@@ -901,7 +901,7 @@
       "part": "battery",
       "offset": [
        0,
-       25.8,
+       25.7,
        -19.2
       ],
       "how": "exact",
@@ -919,9 +919,9 @@
       "note": "behind the servo body's mid grey back cover, its blue wrap showing through the cover's cutout above the screws (M5Stack's annotated photo of the back: 550 mAh BATTERY); picked, the cover turns see-through",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+       "ref": "7aa107c5c2eab7676ae65f1746a4c2c2fb0123e0",
        "path": "robot3d/mesh.go",
-       "line": 76,
+       "line": 81,
        "quote": "batteryX"
       },
       "see": [
@@ -986,9 +986,9 @@
       "note": "the stand's USB-C, in the middle of its back under the servo body (M5Stack's annotated photo: USB-C CHG / DATA)",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+       "ref": "7aa107c5c2eab7676ae65f1746a4c2c2fb0123e0",
        "path": "robot3d/mesh.go",
-       "line": 81,
+       "line": 86,
        "quote": "standUsbX, standUsbY"
       }
      }
@@ -1149,7 +1149,7 @@
     "part": "servo",
     "offset": [
      0.25,
-     14.4,
+     14.3,
      -23.15
     ],
     "how": "exact",
@@ -1167,9 +1167,9 @@
     "note": "on the body's back, in the small window between the two screws of the light band at the servo body's foot, just above the stand's USB-C (M5Stack's product photos and drawing of the back)",
     "source": {
      "repo": "i41eu-assets",
-     "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+     "ref": "7aa107c5c2eab7676ae65f1746a4c2c2fb0123e0",
      "path": "robot3d/mesh.go",
-     "line": 80,
+     "line": 85,
      "quote": "backLedX, backLedY"
     }
    },
@@ -1437,9 +1437,9 @@
       "note": "the left light bar, on the left as you face the screen (-X, the robot's own right side; the firmware's leftNeonLight), in the slot through the head's rounded top edge, flush with it (M5Stack's drawing and product photos); picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "0de8e9600dfdf2fca894fd917db9a7a38990c01d",
+       "ref": "7aa107c5c2eab7676ae65f1746a4c2c2fb0123e0",
        "path": "robot3d/mesh.go",
-       "line": 92,
+       "line": 97,
        "quote": "edgeR, edgeCX, edgeCY = 5.0, 22.03, 65.5"
       },
       "see": [
@@ -1473,9 +1473,9 @@
       "note": "the right light bar, on the right as you face the screen (+X; the firmware's rightNeonLight), in the slot through the head's rounded top edge, flush with it (M5Stack's drawing and product photos); picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "0de8e9600dfdf2fca894fd917db9a7a38990c01d",
+       "ref": "7aa107c5c2eab7676ae65f1746a4c2c2fb0123e0",
        "path": "robot3d/mesh.go",
-       "line": 92,
+       "line": 97,
        "quote": "edgeR, edgeCX, edgeCY = 5.0, 22.03, 65.5"
       },
       "see": [
