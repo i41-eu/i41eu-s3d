@@ -599,7 +599,7 @@
     "part": "servo",
     "offset": [
      0,
-     12.5,
+     14,
      0
     ],
     "how": "joint",
@@ -613,13 +613,13 @@
      "r": 25,
      "free": true
     },
-    "note": "the yaw joint: the servo body turns on the plate about the yaw axis; a ring round the turntable",
+    "note": "the yaw joint: the servo body turns on the plate's ring about the yaw axis; a ring round the turntable",
     "source": {
      "repo": "i41eu-assets",
-     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
      "path": "robot3d/mesh.go",
-     "line": 114,
-     "quote": "StackChan-ServoBody.stl"
+     "line": 29,
+     "quote": "servoBottom = 11.2"
     }
    },
    "features": [
@@ -671,7 +671,7 @@
     "part": "pitch-servo",
     "offset": [
      16.5,
-     38.6,
+     41.3,
      -17
     ],
     "how": "exact",
@@ -686,13 +686,13 @@
      "h": 4,
      "r": 1
     },
-    "note": "the pitch servo (the black box robot3d draws in the servo body's pocket), seen through the open back under the main board (the owner's photo of the back)",
+    "note": "the pitch servo (the dark box robot3d draws in the servo body's pocket, round the pitch axis), seen through the open back under the main board (the owner's photo of the back; M5Stack's drawing of the back: the horn there)",
     "source": {
      "repo": "i41eu-assets",
-     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
      "path": "robot3d/mesh.go",
-     "line": 63,
-     "quote": "pitchServoX0, pitchServoX1 = 11.0, 22.0"
+     "line": 68,
+     "quote": "pitchServoY0, pitchServoY1 = servoBottom + 27.5, servoBottom + 39.0"
     }
    },
    "features": [
@@ -898,13 +898,13 @@
      "id": "battery",
      "name": "battery",
      "where": {
-      "part": "servo",
+      "part": "battery",
       "offset": [
        0,
-       25,
-       -20
+       25.8,
+       -19.2
       ],
-      "how": "near",
+      "how": "exact",
       "out": [
        0,
        0,
@@ -912,15 +912,21 @@
       ],
       "shape": {
        "kind": "rect",
-       "w": 20,
-       "h": 12,
+       "w": 26,
+       "h": 14,
        "r": 2
       },
-      "note": "in the back, under the head's board (M5Stack's picture of the open back: 550 mAh BATTERY)",
+      "note": "behind the servo body's mid grey back cover, its blue wrap showing through the cover's cutout above the screws (M5Stack's annotated photo of the back: 550 mAh BATTERY); picked, the cover turns see-through",
       "source": {
-       "url": "https://docs.m5stack.com/en/StackChan",
-       "quote": "550 mAh BATTERY"
-      }
+       "repo": "i41eu-assets",
+       "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+       "path": "robot3d/mesh.go",
+       "line": 76,
+       "quote": "batteryX"
+      },
+      "see": [
+       "servo-cover"
+      ]
      }
     },
     {
@@ -930,8 +936,8 @@
       "part": "core",
       "offset": [
        -27,
-       42.8,
-       26.25
+       43.5,
+       25.45
       ],
       "how": "exact",
       "out": [
@@ -941,17 +947,49 @@
       ],
       "shape": {
        "kind": "rect",
-       "w": 3.6,
-       "h": 9.6,
-       "r": 1.8
+       "w": 4.2,
+       "h": 9.9,
+       "r": 2.1
       },
-      "note": "the CoreS3's USB-C on its right side (the stand's port is not modelled)",
+      "note": "the CoreS3's USB-C, in the middle of its side on the left as you face the screen (the robot's right), under the power button (M5Stack's drawing and product photos of that side)",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
        "path": "robot3d/shade.go",
-       "line": 132,
-       "quote": "roundRect(p.Z-cz, p.Y+0.7, 1.5, 4.4, 1.4)"
+       "line": 142,
+       "quote": "roundRect(p.Z+0.4, p.Y, 1.8, 4.65, 1.8)"
+      }
+     }
+    },
+    {
+     "id": "stand-usb",
+     "name": "stand's USB-C",
+     "where": {
+      "part": "plate",
+      "offset": [
+       0.6,
+       7.55,
+       -23.3
+      ],
+      "how": "exact",
+      "out": [
+       0,
+       0,
+       -1
+      ],
+      "shape": {
+       "kind": "rect",
+       "w": 9.8,
+       "h": 4.1,
+       "r": 2
+      },
+      "note": "the stand's USB-C, in the middle of its back under the servo body (M5Stack's annotated photo: USB-C CHG / DATA)",
+      "source": {
+       "repo": "i41eu-assets",
+       "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+       "path": "robot3d/mesh.go",
+       "line": 81,
+       "quote": "standUsbX, standUsbY"
       }
      }
     },
@@ -962,8 +1000,8 @@
       "part": "core",
       "offset": [
        -27,
-       57.5,
-       26.25
+       56.4,
+       25.25
       ],
       "how": "exact",
       "out": [
@@ -973,17 +1011,17 @@
       ],
       "shape": {
        "kind": "rect",
-       "w": 7.2,
-       "h": 6.4,
-       "r": 1.8
+       "w": 10.6,
+       "h": 8.2,
+       "r": 2.4
       },
-      "note": "on the CoreS3's right side",
+      "note": "on the CoreS3's side on the left as you face the screen (the robot's right), in its upper third, a little behind the middle: wider than high, in a black ring, the power sign above it (M5Stack's drawing and product photos of that side)",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+       "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
        "path": "robot3d/shade.go",
-       "line": 126,
-       "quote": "roundRect(p.Z-cz, p.Y-14, 3, 2.6, 1.2)"
+       "line": 133,
+       "quote": "roundRect(p.Z+0.6, p.Y-12.9, 4.95, 3.75, 2.2)"
       }
      }
     },
@@ -1043,7 +1081,8 @@
      "kind": "sensor",
      "does": "A computer or a charger plugged in (usb_data, core_vbus_v, plug events); which of the two ports (head or stand) cannot be told.",
      "on": [
-      "usb"
+      "usb",
+      "stand-usb"
      ],
      "sources": [
       {
@@ -1052,6 +1091,10 @@
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 30,
        "quote": "| USB ports (head CoreS3 + stand)"
+      },
+      {
+       "url": "https://docs.m5stack.com/en/StackChan",
+       "quote": "both the USB-C port on the main unit and the one on the base support data transmission"
       }
      ]
     },
@@ -1070,6 +1113,10 @@
        "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
        "line": 31,
        "quote": "| Power button | on the AXP2101 PWRON"
+      },
+      {
+       "url": "https://docs.m5stack.com/en/StackChan",
+       "quote": "located next to the USB-C port on the left side"
       }
      ]
     },
@@ -1082,6 +1129,68 @@
       "led"
      ],
      "sources": [
+      {
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 45,
+       "quote": "| Power/charge LED (red) | on the AXP2101 (CHGLED, reg 0x69)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "body-usb-led",
+   "name": "USB power LED (body)",
+   "chip": "LED, red (D1 on the adapter board)",
+   "kind": "other",
+   "where": {
+    "part": "servo",
+    "offset": [
+     0.25,
+     14.4,
+     -23.15
+    ],
+    "how": "exact",
+    "out": [
+     0,
+     0,
+     -1
+    ],
+    "shape": {
+     "kind": "rect",
+     "w": 2.4,
+     "h": 3.8,
+     "r": 0.8
+    },
+    "note": "on the body's back, in the small window between the two screws of the light band at the servo body's foot, just above the stand's USB-C (M5Stack's product photos and drawing of the back)",
+    "source": {
+     "repo": "i41eu-assets",
+     "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
+     "path": "robot3d/mesh.go",
+     "line": 80,
+     "quote": "backLedX, backLedY"
+    }
+   },
+   "features": [
+    {
+     "id": "usb-power-led",
+     "name": "USB power LED",
+     "kind": "other",
+     "does": "Lights red while USB power is on the body's 5 V line (a cable in the stand's USB-C; both USB-C ports feed the same supply). It is wired to that line on the body's adapter board, so the firmware cannot switch it; the LED the firmware switches is the CoreS3's power/charge LED on its bottom.",
+     "sources": [
+      {
+       "url": "https://docs.m5stack.com/en/StackChan",
+       "quote": "StackChan Base Adapter Board Schematic"
+      },
+      {
+       "repo": "i41eu-StackChan",
+       "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
+       "path": "firmware/main/apps/app_embody_mode/HARDWARE.md",
+       "line": 30,
+       "quote": "| USB ports (head CoreS3 + stand)"
+      },
       {
        "repo": "i41eu-StackChan",
        "ref": "15d12c1f59d3670481452bb5e0b32adf283028a9",
@@ -1554,8 +1663,8 @@
     "part": "core",
     "offset": [
      -27,
-     30,
-     26.25
+     29.4,
+     24.65
     ],
     "how": "exact",
     "out": [
@@ -1565,17 +1674,17 @@
     ],
     "shape": {
      "kind": "rect",
-     "w": 5.8,
-     "h": 8.8,
+     "w": 6.1,
+     "h": 11.3,
      "r": 1
     },
-    "note": "on the CoreS3's right side, below the USB-C (the red Grove port)",
+    "note": "on the CoreS3's side on the left as you face the screen (the robot's right), at the bottom, under the USB-C (the red Grove port; M5Stack's drawing and product photos of that side)",
     "source": {
      "repo": "i41eu-assets",
-     "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+     "ref": "ea77ca937df90dfd5e219bff9aa3de6c039d5135",
      "path": "robot3d/shade.go",
-     "line": 135,
-     "quote": "roundRect(p.Z-cz, p.Y+13.5, 2.5, 4, 0.4)"
+     "line": 145,
+     "quote": "roundRect(p.Z+1.2, p.Y+14.1, 2.65, 5.25, 0.4)"
     }
    },
    "features": [

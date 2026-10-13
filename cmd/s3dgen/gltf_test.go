@@ -171,8 +171,8 @@ func TestPartsPlaced(t *testing.T) {
 	}
 	at := world(doc, nil)
 	parts := robot3d.Parts()
-	if len(parts) != 14 {
-		t.Errorf("robot3d has %d parts, want 14", len(parts))
+	if len(parts) != 15 {
+		t.Errorf("robot3d has %d parts, want 15", len(parts))
 	}
 	for _, p := range parts {
 		n, ok := byName[p.Name]
@@ -316,11 +316,16 @@ func TestTextures(t *testing.T) {
 	}{
 		{"the glass front", "core", core, robot3d.V3{Z: 1}},
 		{"the red ring", "core", robot3d.V3{X: 1.55, Y: 43.5 - 20.3, Z: 33.6}, robot3d.V3{Z: 1}},
-		{"the power button", "core", robot3d.V3{X: -27, Y: 57.5, Z: 26.25}, robot3d.V3{X: -1}},
-		{"the USB-C port", "core", robot3d.V3{X: -27, Y: 42.8, Z: 26.25}, robot3d.V3{X: -1}},
+		{"the power button", "core", robot3d.V3{X: -27, Y: 56.4, Z: 25.25}, robot3d.V3{X: -1}},
+		{"the power button's black ring", "core", robot3d.V3{X: -27, Y: 56.4, Z: 29.75}, robot3d.V3{X: -1}},
+		{"the power sign above it", "core", robot3d.V3{X: -27, Y: 63.3, Z: 26.25}, robot3d.V3{X: -1}},
+		{"the USB-C port", "core", robot3d.V3{X: -27, Y: 43.5, Z: 25.45}, robot3d.V3{X: -1}},
 		{"the board's ribbon cable, through the open back", "core", robot3d.V3{X: -7, Y: 53.5, Z: 17.4}, robot3d.V3{Z: -1}},
 		{"the board's white connector", "core", robot3d.V3{X: 11.5, Y: 61.2, Z: 17.4}, robot3d.V3{Z: -1}},
 		{"the left label's dark end", "body", robot3d.V3{X: 27.03, Y: 60, Z: 13.5}, robot3d.V3{X: 1}},
+		{"the body's red LED", "servo", robot3d.V3{X: 0.25, Y: 14.4, Z: -23.15}, robot3d.V3{Z: -1}},
+		{"the back cover", "servo-cover", robot3d.V3{X: 0, Y: 25, Z: -22.39}, robot3d.V3{Z: -1}},
+		{"the stand's USB-C", "plate", robot3d.V3{X: 3.1, Y: 7.55, Z: -23.3}, robot3d.V3{Z: -1}},
 	} {
 		want, _ := robot3d.Surface(c.part, c.p, c.n)
 		var pr primitive
@@ -397,7 +402,7 @@ func TestTextures(t *testing.T) {
 // openEdgesMax is each part's most open edges (an edge of one triangle only: a hole in its
 // surface); it must not grow. All of robot3d's parts are closed now.
 var openEdgesMax = map[string]int{
-	"plate": 0, "servo": 0, "servo-cover": 0, "pitch-servo": 0, "body": 0, "core": 0,
+	"plate": 0, "servo": 0, "servo-cover": 0, "pitch-servo": 0, "battery": 0, "body": 0, "core": 0,
 	"led-bar-left": 0, "led-bar-right": 0, "top-board": 0, "base-cover": 0,
 	"led-board-left": 0, "led-board-right": 0, "led-chips-left": 0, "led-chips-right": 0,
 }

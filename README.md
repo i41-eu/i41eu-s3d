@@ -57,7 +57,8 @@ it prints each check, the path of a screenshot of each width (in a temporary dir
 
 **robot3d's details as textures.** `s3dgen` bakes what robot3d's renderer draws on the CoreS3,
 the main body and the board through the open back (the glass front and the red ring, the sensors' dots, the vents,
-the ports and the power button, the labels) into textures, from `robot3d.Surface`. `go.mod` pins
+the ports and the power button, the labels), and at the body's back on the servo body, its back cover and the stand
+(the screws, the red LED, the stand's USB-C), into textures, from `robot3d.Surface`. `go.mod` pins
 i41eu-assets at the commit that has it (branch `claude/robot3d-interior` there, with the inside of
 the head as on the photos: the servo body's top cover and the black pitch servo); once that is in
 its `main`, `go get` the merge.
