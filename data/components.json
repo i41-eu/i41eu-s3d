@@ -1418,29 +1418,29 @@
      "where": {
       "part": "led-bar-left",
       "offset": [
-       -26.1,
-       69.4,
-       -1.65
+       -25.57,
+       69.04,
+       -1.5
       ],
       "how": "exact",
       "out": [
        -1,
-       0.3,
+       1,
        0
       ],
       "shape": {
        "kind": "rect",
-       "w": 30.5,
-       "h": 4.2,
-       "r": 2
+       "w": 30,
+       "h": 2.9,
+       "r": 1.2
       },
-      "note": "the left light bar, on the left as you face the screen (-X, the robot's own right side; the firmware's leftNeonLight), along the top; picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
+      "note": "the left light bar, on the left as you face the screen (-X, the robot's own right side; the firmware's leftNeonLight), in the slot through the head's rounded top edge, flush with it (M5Stack's drawing and product photos); picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
-       "path": "robot3d/shade.go",
-       "line": 225,
-       "quote": "own right side, -X (the owner's look at the robot, 2026-10-11)"
+       "ref": "0de8e9600dfdf2fca894fd917db9a7a38990c01d",
+       "path": "robot3d/mesh.go",
+       "line": 92,
+       "quote": "edgeR, edgeCX, edgeCY = 5.0, 22.03, 65.5"
       },
       "see": [
        "body",
@@ -1454,29 +1454,29 @@
      "where": {
       "part": "led-bar-right",
       "offset": [
-       26.1,
-       69.4,
-       -1.65
+       25.57,
+       69.04,
+       -1.5
       ],
       "how": "exact",
       "out": [
        1,
-       0.3,
+       1,
        0
       ],
       "shape": {
        "kind": "rect",
-       "w": 30.5,
-       "h": 4.2,
-       "r": 2
+       "w": 30,
+       "h": 2.9,
+       "r": 1.2
       },
-      "note": "the right light bar, on the right as you face the screen (+X; the firmware's rightNeonLight), along the top; picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
+      "note": "the right light bar, on the right as you face the screen (+X; the firmware's rightNeonLight), in the slot through the head's rounded top edge, flush with it (M5Stack's drawing and product photos); picked, the body turns see-through to show its six LEDs on their board inside (the owner's photo of the inside, 2026-10-12)",
       "source": {
        "repo": "i41eu-assets",
-       "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
-       "path": "robot3d/shade.go",
-       "line": 225,
-       "quote": "own right side, -X (the owner's look at the robot, 2026-10-11)"
+       "ref": "0de8e9600dfdf2fca894fd917db9a7a38990c01d",
+       "path": "robot3d/mesh.go",
+       "line": 92,
+       "quote": "edgeR, edgeCX, edgeCY = 5.0, 22.03, 65.5"
       },
       "see": [
        "body",

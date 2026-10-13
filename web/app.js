@@ -158,7 +158,12 @@ function lightLEDs(robot) {
   const bar = robot.getObjectByName('led-bar-left');
   bar.geometry.computeBoundingBox();
   const { min, max } = bar.geometry.boundingBox; // millimetres at rest, the bar along Z
-  ledUniforms.uBar.value.set(min.z, max.z, min.y, max.y);
+  // where the light shows on the side: the light guide's lowest point facing out (its lip on the
+  // head's rounded edge, |x| > 26 mm), as robot3d's barY0; its inside goes lower, hidden
+  const pos = bar.geometry.attributes.position;
+  let y0 = Infinity;
+  for (let i = 0; i < pos.count; i++) if (Math.abs(pos.getX(i)) > 26) y0 = Math.min(y0, pos.getY(i));
+  ledUniforms.uBar.value.set(min.z, max.z, y0, max.y);
   for (const name of ['led-bar-left', 'led-bar-right']) {
     const o = robot.getObjectByName(name);
     o.material = withLEDs(o.material, true);
