@@ -333,10 +333,14 @@ function outOf(where) {
   const o = new THREE.Vector3(where.offset[0], 0, where.offset[2]);
   return o.lengthSq() > 1 ? o.normalize() : new THREE.Vector3(0, 0, 1);
 }
-// onSurface gives where the ray from outside along out meets the robot, in node's space.
+// onSurface gives where the ray from outside along out meets the robot at the place, in node's
+// space: the first surface within placeDepth of it (a cover over it, as the back cover over the
+// battery), not a part further out in the way (the stand under the CoreS3's bottom). The same
+// rule is checked on robot.glb by cmd/s3dgen's TestMarkersLand.
+const placeDepth = 0.004; // m
 function onSurface(robot, node, offset, out) {
   const p = node.localToWorld(new THREE.Vector3().fromArray(offset));
-  const ray = new THREE.Raycaster(p.clone().addScaledVector(out, 0.2), out.clone().negate(), 0, 0.2);
+  const ray = new THREE.Raycaster(p.clone().addScaledVector(out, 0.2), out.clone().negate(), 0.2 - placeDepth, 0.2 + placeDepth);
   const hit = ray.intersectObject(robot, true).find((h) => h.object.isMesh);
   return node.worldToLocal((hit ? hit.point : p).clone());
 }

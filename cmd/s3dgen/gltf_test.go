@@ -10,6 +10,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"sort"
 	"testing"
 
 	"github.com/i41-eu/i41eu-assets/robot3d"
@@ -484,6 +485,125 @@ func TestDecals(t *testing.T) {
 		f := v3(dc.Face)
 		if math.Abs(u.Dot(v)) > 1e-6 || math.Abs(u.Dot(f)) > 1e-6 || math.Abs(v.Dot(f)) > 1e-6 || u.Len() == 0 || v.Len() == 0 {
 			t.Errorf("%s: corners not a rectangle on its face", dc.Image)
+		}
+	}
+}
+
+// A marker sits where the ray from outside along its place's out meets the robot within
+// placeDepth of the place (web/app.js onSurface): on robot.glb at rest, every marker drawn on the
+// surface lands there, and the places on the CoreS3's bottom land on the CoreS3, not on the
+// stand under it (the first surface from outside, as the page took before).
+func TestMarkersLand(t *testing.T) {
+	const placeDepth, far = 4.0, 200.0 // mm, as in web/app.js
+	b, err := os.ReadFile("../../data/components.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+	type place struct {
+		Part   string
+		Offset [3]float64
+		Out    []float64
+		Area   string
+		Shape  *struct{ Free bool }
+	}
+	var data struct {
+		Components []struct {
+			ID      string
+			Where   *place
+			Windows []struct {
+				ID    string
+				Where place
+			}
+		}
+	}
+	if err := json.Unmarshal(b, &data); err != nil {
+		t.Fatal(err)
+	}
+	doc, bin := export(t)
+	at := world(doc, nil)
+	type face struct {
+		a, b, c robot3d.V3
+		part    string
+	}
+	var faces []face
+	for _, n := range doc.Nodes {
+		if n.Mesh == nil {
+			continue
+		}
+		vs := triangles(t, doc, bin, *n.Mesh)
+		for i := 0; i < len(vs); i += 3 {
+			faces = append(faces, face{at[n.Name].point(vs[i]), at[n.Name].point(vs[i+1]), at[n.Name].point(vs[i+2]), n.Name})
+		}
+	}
+	// hits gives the distances along the ray at which it crosses each face, nearest first.
+	type crossing struct {
+		d    float64
+		part string
+	}
+	hits := func(o, dir robot3d.V3) []crossing {
+		var out []crossing
+		for _, f := range faces {
+			e1, e2 := f.b.Sub(f.a), f.c.Sub(f.a)
+			p := dir.Cross(e2)
+			det := e1.Dot(p)
+			if math.Abs(det) < 1e-12 {
+				continue
+			}
+			s := o.Sub(f.a)
+			u := s.Dot(p) / det
+			q := s.Cross(e1)
+			v := dir.Dot(q) / det
+			if u < 0 || v < 0 || u+v > 1 {
+				continue
+			}
+			if d := e2.Dot(q) / det; d > 0 {
+				out = append(out, crossing{d, f.part})
+			}
+		}
+		sort.Slice(out, func(i, j int) bool { return out[i].d < out[j].d })
+		return out
+	}
+	landed := map[string]string{}
+	check := func(id string, w place) {
+		if w.Area == "screen" || w.Shape != nil && w.Shape.Free {
+			return
+		}
+		p := robot3d.V3{X: w.Offset[0], Y: w.Offset[1], Z: w.Offset[2]}
+		out := robot3d.V3{X: p.X, Z: p.Z} // as the page: out from the yaw axis by default
+		if len(w.Out) == 3 {
+			out = robot3d.V3{X: w.Out[0], Y: w.Out[1], Z: w.Out[2]}
+		}
+		out = out.Mul(1 / out.Len())
+		all := hits(p.Add(out.Mul(far)), out.Mul(-1))
+		var first, then crossing
+		for _, h := range all {
+			if h.d <= far && first.part == "" {
+				first = h // the page's old rule: the first surface from outside
+			}
+			if h.d >= far-placeDepth && h.d <= far+placeDepth && then.part == "" {
+				then = h
+			}
+		}
+		if then.part == "" {
+			t.Errorf("%s: no surface within %g mm of its place %v along %v", id, placeDepth, w.Offset, out)
+			return
+		}
+		landed[id] = then.part
+		if first.part != "" && (first.part != then.part || math.Abs(first.d-then.d) > 1e-6) {
+			t.Logf("%s: lands on %s %.1f mm from its place (the first surface from outside: %s, %.1f mm out)", id, then.part, far-then.d, first.part, far-first.d)
+		}
+	}
+	for _, c := range data.Components {
+		if c.Where != nil {
+			check(c.ID, *c.Where)
+		}
+		for _, w := range c.Windows {
+			check(c.ID+"/"+w.ID, w.Where)
+		}
+	}
+	for _, id := range []string{"reset-button", "microsd-slot", "axp2101/led"} {
+		if landed[id] != "core" {
+			t.Errorf("%s: lands on %q, not on the CoreS3's bottom", id, landed[id])
 		}
 	}
 }
