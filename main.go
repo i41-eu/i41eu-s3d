@@ -119,7 +119,7 @@ type Use struct {
 // LEDs is the colour an app's LEDs show on the page (#rrggbb), and why. Each, if given, is each
 // LED's colour in robot3d's -leds form (i41eu-assets renders.json): "#rrggbb*12", or 12
 // comma-separated colours numbered as the robot's leds command does (left 0-5, right 6-11; 0 and
-// 11 at the front), empty for an unlit LED; Color is then the colour of its lit ones.
+// 11 at the front), empty for an unlit LED; Color is then one of its lit ones (the list's swatch).
 type LEDs struct {
 	Color   string   `json:"color"`
 	Each    string   `json:"each,omitempty"`

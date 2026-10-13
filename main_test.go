@@ -229,10 +229,15 @@ func TestApps(t *testing.T) {
 				} else if len(each) != 12 {
 					t.Errorf("%s: leds each %q: 12 LEDs, not %d", a.ID, l.Each, len(each))
 				}
+				swatch := false // its colour is one of the lit ones
 				for _, c := range each {
-					if c != "" && c != l.Color {
-						t.Errorf("%s: leds each %q: %q, its colour is %s", a.ID, l.Each, c, l.Color)
+					if c != "" && !regexp.MustCompile(`^#[0-9a-f]{6}$`).MatchString(c) {
+						t.Errorf("%s: leds each %q: %q, not #rrggbb", a.ID, l.Each, c)
 					}
+					swatch = swatch || c == l.Color
+				}
+				if !swatch {
+					t.Errorf("%s: leds each %q: its colour %s is none of them", a.ID, l.Each, l.Color)
 				}
 			}
 			for _, s := range l.Sources {
@@ -268,6 +273,62 @@ func TestApps(t *testing.T) {
 		if !got[id] {
 			t.Errorf("app %s missing", id)
 		}
+	}
+}
+
+// An app's LEDs on the page are those of the assets' picture with its screen (i41eu-assets
+// renders.json, beside this repo; skipped without it): an app whose picture lights its LEDs
+// lights the same 12 here, so the page does not show its screen with the strips dark.
+func TestAppLEDsAsRendered(t *testing.T) {
+	b, err := os.ReadFile(filepath.Join("..", "i41eu-assets", "renders.json"))
+	if err != nil {
+		t.Skip("no ../i41eu-assets (setup.sh)")
+	}
+	var list struct {
+		Renders []struct{ Name, Screen, LEDs string }
+	}
+	if err := json.Unmarshal(b, &list); err != nil {
+		t.Fatal(err)
+	}
+	// twelve is robot3d's -leds form as 12 colours ("" for off).
+	twelve := func(s string) []string {
+		s = strings.ToLower(strings.TrimSpace(s))
+		if c, n, ok := strings.Cut(s, "*"); ok && n == "12" {
+			s = strings.TrimSuffix(strings.Repeat(c+",", 12), ",")
+		}
+		out := strings.Split(s, ",")
+		for i := range out {
+			out[i] = strings.TrimSpace(out[i])
+		}
+		return out
+	}
+	_, apps := load(t)
+	checked := 0
+	for _, a := range apps {
+		if a.Screen == nil {
+			continue
+		}
+		for _, r := range list.Renders {
+			if r.Screen != "screens/"+a.Screen.Image || r.LEDs == "" {
+				continue
+			}
+			checked++
+			want := strings.Join(twelve(r.LEDs), ",")
+			if a.LEDs == nil {
+				t.Errorf("%s: the assets' picture %s lights the LEDs (%s), the app has no leds", a.ID, r.Name, want)
+				continue
+			}
+			got := a.LEDs.Each
+			if got == "" {
+				got = a.LEDs.Color + "*12"
+			}
+			if g := strings.Join(twelve(got), ","); g != want {
+				t.Errorf("%s: leds %s, the assets' picture %s %s", a.ID, g, r.Name, want)
+			}
+		}
+	}
+	if checked == 0 {
+		t.Error("no app's screen has a picture with its LEDs")
 	}
 }
 

@@ -21,6 +21,27 @@
    "quote": "every sensor and command, an app like any other"
   }
  ],
+ "leds": {
+  "color": "#0074b2",
+  "each": "#030cb2,#030cb2,#030cb2,#0074b2,#0074b2,#06b210,#06b210,#0074b2,#0074b2,#030cb2,#030cb2,#030cb2",
+  "does": "As lit when its readings screen was taken (the screen's LEDs row shows them, as the assets' picture of Raw data does): dark blue toward the screen, light blue, green at the back, on both sides.",
+  "sources": [
+   {
+    "repo": "q41eu-raw",
+    "ref": "feb7184cc5e85a7cfbae84fdea62d07d691911c8",
+    "path": "readme.md",
+    "line": 41,
+    "quote": "LEDs as lit"
+   },
+   {
+    "repo": "i41eu-assets",
+    "ref": "1be6ecea6ea2c7c1ea5c24be9a322b8b9ea991f3",
+    "path": "renders.json",
+    "line": 21,
+    "quote": "\"leds\": \"#030cb2,#030cb2,#030cb2,#0074b2,#0074b2,#06b210"
+   }
+  ]
+ },
  "uses": [
   {
    "feature": "display",
